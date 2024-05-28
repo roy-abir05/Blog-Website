@@ -5,12 +5,41 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f326daa6-a545-4059-a8b9-77ced13a99c6" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/blogger/blogwebsite/configuration/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/blogger/blogwebsite/configuration/security/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/blogger/blogwebsite/models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/blogger/blogwebsite/models/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/blogger/blogwebsite/repositories/UserRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/blogger/blogwebsite/repositories/UserRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/blogger/blogwebsite/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/blogger/blogwebsite/service/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/blogger/blogwebsite/configuration/SecurityConfig$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/blogger/blogwebsite/configuration/SecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/blogger/blogwebsite/configuration/SecurityConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/blogger/blogwebsite/controllers/PostController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/blogger/blogwebsite/controllers/PostController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/blogger/blogwebsite/controllers/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/blogger/blogwebsite/controllers/UserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/blogger/blogwebsite/models/Post.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/blogger/blogwebsite/models/Post.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/blogger/blogwebsite/models/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/blogger/blogwebsite/models/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/blogger/blogwebsite/repositories/UserRepo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/blogger/blogwebsite/repositories/UserRepo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/blogger/blogwebsite/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/blogger/blogwebsite/service/UserService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/NavBar/NavBar.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/NavBar/NavBar.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/NavBar/NavBar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/NavBar/NavBar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/Home/Home.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/Home/Home.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/Home/Home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/Home/Home.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -23,20 +52,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/abir/Documents/Blog Website/Backend&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "Spring Boot.Application.executor": "Run",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/home/abir/Documents/Blog Website/Backend",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "reference.settingsdialog.IDE.editor.colors.Console Font",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="BlogWebsite" />
@@ -65,10 +100,27 @@
       <workItem from="1716621619007" duration="38000" />
       <workItem from="1716708286319" duration="804000" />
       <workItem from="1716710029379" duration="22000" />
+      <workItem from="1716716599074" duration="8798000" />
+      <workItem from="1716731485059" duration="1261000" />
+      <workItem from="1716794967923" duration="1501000" />
+      <workItem from="1716798199086" duration="3389000" />
+      <workItem from="1716803052207" duration="14000" />
+      <workItem from="1716803505362" duration="234000" />
+      <workItem from="1716803758644" duration="371000" />
+      <workItem from="1716804144092" duration="168000" />
+      <workItem from="1716804322775" duration="74000" />
+      <workItem from="1716804406757" duration="95000" />
+      <workItem from="1716804512421" duration="50000" />
+      <workItem from="1716804570973" duration="195000" />
+      <workItem from="1716867245109" duration="2355000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

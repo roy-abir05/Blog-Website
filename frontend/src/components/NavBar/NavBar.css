@@ -1,7 +1,8 @@
 nav {
     width: 100vw;
     height: 20vh;
-    background-color: #202938;
+    /* background-color: #202938; */
+    background-color: rgba(0, 0, 0, 0.5);
 
     display: flex;
     align-items: center;
@@ -20,7 +21,7 @@ nav {
     height: 15vh;
 }
 
-.SignInButton {
+.SignButton {
     border-radius: 8px;
     border: 1px solid transparent;
     padding: 0.6em 1.2em;
@@ -35,7 +36,7 @@ nav {
     margin: 0px 20px;
 }
 
-.SignInButton:hover {
+.SignButton:hover {
     border-color: #646cff;
     background-color: #202938;
     color: white;
