@@ -1,7 +1,7 @@
 package org.blogger.blogwebsite.service;
 
-import org.blogger.blogwebsite.models.Post;
-import org.blogger.blogwebsite.repositories.PostRepo;
+import org.blogger.blogwebsite.model.Post;
+import org.blogger.blogwebsite.repository.PostRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

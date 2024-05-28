@@ -1,4 +1,4 @@
-package org.blogger.blogwebsite.models;
+package org.blogger.blogwebsite.model;
 
 import jakarta.persistence.*;
 import lombok.Getter;

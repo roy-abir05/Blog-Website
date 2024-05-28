@@ -4,7 +4,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.blogger.blogwebsite.models.User;
+import org.blogger.blogwebsite.model.User;
 import org.blogger.blogwebsite.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -55,7 +55,6 @@ public class OAuth2LoginSuccessHandler extends SavedRequestAwareAuthenticationSu
 
         this.setAlwaysUseDefaultTargetUrl(true);
         this.setDefaultTargetUrl("http://localhost:5173");
-//        this.setDefaultTargetUrl("http://localhost:8080/login/success");
         super.onAuthenticationSuccess(request, response, authentication);
     }
 }

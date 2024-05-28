@@ -6,7 +6,37 @@
   <component name="ChangeListManager">
     <list default="true" id="f326daa6-a545-4059-a8b9-77ced13a99c6" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/blogger/blogwebsite/configuration/security/OAuth2LoginSuccessHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/blogger/blogwebsite/configuration/security/OAuth2LoginSuccessHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/blogger/blogwebsite/configuration/security/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/blogger/blogwebsite/configuration/security/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/blogger/blogwebsite/controllers/CommentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/blogger/blogwebsite/controller/CommentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/blogger/blogwebsite/controllers/PostController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/blogger/blogwebsite/controller/PostController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/blogger/blogwebsite/controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/blogger/blogwebsite/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/blogger/blogwebsite/models/Comment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/blogger/blogwebsite/model/Comment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/blogger/blogwebsite/models/Post.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/blogger/blogwebsite/model/Post.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/blogger/blogwebsite/models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/blogger/blogwebsite/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/blogger/blogwebsite/repositories/CommentRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/blogger/blogwebsite/repository/CommentRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/blogger/blogwebsite/repositories/PostRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/blogger/blogwebsite/repository/PostRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/blogger/blogwebsite/repositories/UserRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/blogger/blogwebsite/repository/UserRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/blogger/blogwebsite/service/CommentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/blogger/blogwebsite/service/CommentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/blogger/blogwebsite/service/PostService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/blogger/blogwebsite/service/PostService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/blogger/blogwebsite/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/blogger/blogwebsite/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/blogger/blogwebsite/configuration/security/OAuth2LoginSuccessHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/blogger/blogwebsite/configuration/security/OAuth2LoginSuccessHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/blogger/blogwebsite/configuration/security/SecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/blogger/blogwebsite/configuration/security/SecurityConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/blogger/blogwebsite/controllers/CommentController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/blogger/blogwebsite/controllers/PostController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/blogger/blogwebsite/controllers/UserController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/blogger/blogwebsite/models/Comment.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/blogger/blogwebsite/models/Post.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/blogger/blogwebsite/models/User.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/blogger/blogwebsite/repositories/CommentRepo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/blogger/blogwebsite/repositories/PostRepo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/blogger/blogwebsite/repositories/UserRepo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/blogger/blogwebsite/service/CommentService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/blogger/blogwebsite/service/CommentService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/blogger/blogwebsite/service/PostService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/blogger/blogwebsite/service/PostService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/blogger/blogwebsite/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/blogger/blogwebsite/service/UserService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/NavBar/NavBar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/NavBar/NavBar.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,7 +121,9 @@
       <workItem from="1716804406757" duration="95000" />
       <workItem from="1716804512421" duration="50000" />
       <workItem from="1716804570973" duration="195000" />
-      <workItem from="1716867245109" duration="2896000" />
+      <workItem from="1716867245109" duration="3121000" />
+      <workItem from="1716877153159" duration="6990000" />
+      <workItem from="1716887495022" duration="1989000" />
     </task>
     <servers />
   </component>

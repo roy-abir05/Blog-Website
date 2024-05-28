@@ -1,4 +1,4 @@
-package org.blogger.blogwebsite.models;
+package org.blogger.blogwebsite.model;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -17,5 +17,6 @@ public class User {
     private Long userId;
     private String name;
     private String email;
+    private String password;
     private String imgUrl;
 }

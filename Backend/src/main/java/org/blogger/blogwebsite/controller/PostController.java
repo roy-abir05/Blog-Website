@@ -1,6 +1,6 @@
-package org.blogger.blogwebsite.controllers;
+package org.blogger.blogwebsite.controller;
 
-import org.blogger.blogwebsite.models.Post;
+import org.blogger.blogwebsite.model.Post;
 import org.blogger.blogwebsite.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

@@ -1,7 +1,7 @@
 package org.blogger.blogwebsite.service;
 
-import org.blogger.blogwebsite.models.Comment;
-import org.blogger.blogwebsite.repositories.CommentRepo;
+import org.blogger.blogwebsite.model.Comment;
+import org.blogger.blogwebsite.repository.CommentRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

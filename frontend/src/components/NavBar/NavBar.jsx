@@ -43,7 +43,8 @@ const NavBar = () => {
   }
 
   const handleSignOut = () => {
-    deleteCookie("login");
+    // deleteCookie("login");
+    window.location.href = "http://localhost:8080/logout";
     setSignedIn(false);
   }
 

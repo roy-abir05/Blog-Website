@@ -1,6 +1,6 @@
-package org.blogger.blogwebsite.controllers;
+package org.blogger.blogwebsite.controller;
 
-import org.blogger.blogwebsite.models.User;
+import org.blogger.blogwebsite.model.User;
 import org.blogger.blogwebsite.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

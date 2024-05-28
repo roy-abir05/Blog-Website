@@ -1,6 +1,6 @@
-package org.blogger.blogwebsite.repositories;
+package org.blogger.blogwebsite.repository;
 
-import org.blogger.blogwebsite.models.User;
+import org.blogger.blogwebsite.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
