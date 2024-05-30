@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign Up</title>
+   <link rel="stylesheet" href="signup.css">
+</head>
+<body>
+
+    <div class="quote">
+        <h2>THE COMMUNITY AWAITS YOU</h2>
+        <p>Login to join the discussions and share your thoughts</p>
+    </div>
+
+    <div class="formContainer">
+        <form action="http://localhost:8080/signup" method="post" id="form">
+
+            <div class="formContent">
+
+                <div class="inputFields">
+
+                    <div class="name">
+                        <input type="text" name="name" placeholder="Name" required>
+                    </div>
+
+                    <div class="email">
+                        <input type="email" name="email" placeholder="Email" required>
+                    </div>
+
+                    <div class="password">
+                        <input type="password" name="password" placeholder="Password" required>
+                    </div>
+
+                    <div class="imgUrl">
+                        <input type="url" name="imgUrl" class="img" placeholder="Image Url (Optional)
+                        " value="">
+                    </div>
+
+                </div>
+
+                <div class="submit">
+                    <input type="submit">
+                </div>
+
+            </div>
+        </form>
+
+        <div class="login">
+            <p class="loginText">Already Have an Account?</p><a href="login.html" class="loginLink">Login</a>
+        </div>
+
+    </div>
+
+    <script>
+        document.getElementById("form").addEventListener("submit", function(event) {
+          event.preventDefault();
+        
+          fetch("http://localhost:8080/signup", {
+            method: "POST",
+            body: new FormData(this)
+          })
+          .then(response => response.text())
+          .then(data => {
+            if(data === "User Already Exists"){
+                alert("Email is already registered");
+                document.getElementById("form").reset();
+            }
+            else{
+                window.location.href = "http://localhost:8080"
+            }
+          })
+          .catch(error => console.error(error));
+        });
+        </script>
+</body>
+</html>

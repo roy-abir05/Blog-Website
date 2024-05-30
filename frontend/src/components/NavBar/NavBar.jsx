@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import './NavBar.css';
-import axios from 'axios';
 
 const NavBar = () => {
 
@@ -27,8 +26,6 @@ const NavBar = () => {
     document.cookie = `${cookieName}=; max-age=0; path=/`;
   }
   
-
-
     useEffect(() => {
       let loginCookie = getCookie("login");
       console.log(loginCookie);
@@ -43,19 +40,23 @@ const NavBar = () => {
   }
 
   const handleSignOut = () => {
-    // deleteCookie("login");
     window.location.href = "http://localhost:8080/logout";
     setSignedIn(false);
   }
 
   return (
     <nav>
-        <a href='/' className='logoAnchor'>
-          <img src="../../../public/blog_logo.png" alt="BlogSite" className='logoImg'/>
-        </a>
 
-        {signedIn || <button className='SignInButton SignButton' onClick={() => handleSignIn()}> Sign In </button>}
-        {signedIn && <button className='SignOutButton SignButton' onClick={() => handleSignOut()}> Sign Out </button>}
+        <div className='logoContainer'>
+          <a href='/' className='logoAnchor'>
+            <img src="../../../public/blog_logo.png" alt="BlogSite" className='logoImg'/>
+          </a>
+        </div>
+
+        <div>
+          {signedIn || <button className='SignInButton SignButton' onClick={() => handleSignIn()}> Sign In </button>}
+          {signedIn && <button className='SignOutButton SignButton' onClick={() => handleSignOut()}> Sign Out </button>}
+        </div>
     </nav>
   )
 }

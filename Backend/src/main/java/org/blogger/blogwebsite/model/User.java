@@ -1,7 +1,11 @@
 package org.blogger.blogwebsite.model;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -10,6 +14,7 @@ import lombok.ToString;
 @Setter
 @ToString
 @Table(name="users")
+@NoArgsConstructor
 public class User {
 
     @Id

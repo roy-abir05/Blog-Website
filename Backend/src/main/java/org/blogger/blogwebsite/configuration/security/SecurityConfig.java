@@ -4,6 +4,7 @@ import org.blogger.blogwebsite.service.JpaUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
@@ -29,17 +30,24 @@ public class SecurityConfig {
 
     @Bean
     SecurityFilterChain filterChain(HttpSecurity http, JpaUserDetailsService jpaUserDetailsService) throws Exception {
+
         return http
                 .authorizeHttpRequests( auth -> {
-                    auth.requestMatchers("/login/**").permitAll();
+                    auth.requestMatchers("/**.css", "/**.png", "/**.jpeg", "/**.jpg", "/**.html").permitAll();
+                    auth.requestMatchers("/error").permitAll();
+                    auth.requestMatchers(HttpMethod.POST, "/signup").permitAll();
                     auth.anyRequest().authenticated();
                 }
                 )
                 .userDetailsService(jpaUserDetailsService)
                 .formLogin(form -> {
-                    form.successHandler(formLoginSuccessHandler);
+                    form.permitAll();
+                    form.loginProcessingUrl("/login");
+                    form.loginPage("/login.html").usernameParameter("email").passwordParameter("password").successHandler(formLoginSuccessHandler);
                 })
                 .oauth2Login(oauth2 -> {
+                    oauth2.permitAll();
+                    oauth2.loginPage("/login.html");
                     oauth2.successHandler(oAuth2LoginSuccessHandler);
                 })
                 .logout(logout -> {
