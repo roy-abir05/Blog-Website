@@ -35,8 +35,7 @@ public class OAuth2LoginSuccessHandler extends SavedRequestAwareAuthenticationSu
         String imgUrl = principal.getAttribute("picture").toString();
 
         userService.findUserByEmail(email)
-                .ifPresentOrElse(user -> {
-                    System.out.println("User already registerd");
+                .ifPresentOrElse(ignore -> {
                 }, () -> {
                     User user = new User();
                     user.setName(name);
@@ -44,14 +43,29 @@ public class OAuth2LoginSuccessHandler extends SavedRequestAwareAuthenticationSu
                     user.setImgUrl(imgUrl);
 
                     userService.addUser(user);
-                });
 
-        Cookie cookie = new Cookie("login", "Success");
-        cookie.setPath("/");
+                });
+        Cookie loginCookie = new Cookie("login", "Success");
+        loginCookie.setPath("/");
+        response.addCookie(loginCookie);
+        userService.findUserByEmail(email)
+                .ifPresentOrElse(user -> {
+                    Cookie userIdCookie = new Cookie("userId", String.valueOf(user.getUserId()));
+                    userIdCookie.setPath("/");
+                    response.addCookie(userIdCookie);
+                }, () -> {});
+        Cookie nameCookie = new Cookie("name", name);
+        nameCookie.setPath("/");
+        Cookie emailCookie = new Cookie("email", email);
+        emailCookie.setPath("/");
+        Cookie imgUrlCookie = new Cookie("imgUrl", imgUrl);
+        imgUrlCookie.setPath("/");
+        response.addCookie(nameCookie);
+        response.addCookie(emailCookie);
+        response.addCookie(imgUrlCookie);
 //        cookie.setHttpOnly(true);
 //        cookie.setSecure(false);
 //        cookie.setDomain("localhost");
-        response.addCookie(cookie);
 
         this.setAlwaysUseDefaultTargetUrl(true);
         this.setDefaultTargetUrl("http://localhost:5173");

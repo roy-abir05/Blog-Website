@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './NavBar.css';
+import { Link } from 'react-router-dom';
 
 const NavBar = () => {
 
@@ -22,13 +23,11 @@ const NavBar = () => {
     return "";
   }
 
-  const deleteCookie = (cookieName) => {
-    document.cookie = `${cookieName}=; max-age=0; path=/`;
-  }
-  
     useEffect(() => {
       let loginCookie = getCookie("login");
       console.log(loginCookie);
+      let userCookie = getCookie("user");
+      console.log(userCookie);
       if(loginCookie==="Success"){
         setSignedIn(true);
       }
@@ -51,6 +50,13 @@ const NavBar = () => {
           <a href='/' className='logoAnchor'>
             <img src="../../../public/blog_logo.png" alt="BlogSite" className='logoImg'/>
           </a>
+        </div>
+
+        <div className='tabs'>
+          <Link to="/"><span className='tab homeTab'>Home</span></Link>
+          <Link to="/blogs/listBlogs"><span className='tab blogsTab'>Blogs</span></Link>
+          <Link to="/about"><span className='tab aboutTab'>About</span></Link>
+          {/* {signedIn || <Link to="/blogs"></Link> } */}
         </div>
 
         <div>
