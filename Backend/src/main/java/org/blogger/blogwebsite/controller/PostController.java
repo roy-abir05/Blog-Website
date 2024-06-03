@@ -8,12 +8,13 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("post")
+@RequestMapping("api/post")
 public class PostController {
 
     @Autowired
     private PostService postService;
 
+    @CrossOrigin(origins = "http://localhost:5173", allowedHeaders = "Content-Type")
     @PostMapping("addPost")
     public Post addPost(@RequestBody Post post) {
         return postService.addPost(post);

@@ -18,9 +18,11 @@ public class Post {
     private Long userId;
     private String title;
     private String dateAndTime;
+
+    @Column(columnDefinition = "text")
     private String content;
-    private Integer upVote;
-    private Integer downVote;
+    private Long upVote;
+    private Long downVote;
     private String category;
 
 }

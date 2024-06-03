@@ -18,8 +18,6 @@ public class FormLoginSuccessHandler extends SavedRequestAwareAuthenticationSucc
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
 
-//        System.out.println(authentication.getPrincipal().getClass().getName());
-
         SecurityUser securityUser = (SecurityUser) authentication.getPrincipal();
 
         User user = securityUser.user;

@@ -24,7 +24,6 @@ public class UserController {
 
         List<User> users = userService.getAllUsers();
         return users.toString();
-//        return "hello";
     }
 
 }
