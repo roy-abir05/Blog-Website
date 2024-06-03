@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import './NavBar.css';
 import { Link } from 'react-router-dom';
+import ProfileDropdown from '../ProfileDropdown/ProfileDropdown';
 
 const NavBar = () => {
 
   const [signedIn, setSignedIn] = useState(false);
-  const [user, setUser] = useState(null);
+  const [isProfileDropdown, setProfileDropdown] = useState(false);
 
   const getCookie = (cname) => {
     const name = cname + "=";
@@ -22,17 +23,16 @@ const NavBar = () => {
     }
     return "";
   }
-
-    useEffect(() => {
-      let loginCookie = getCookie("login");
-      console.log(loginCookie);
-      let userCookie = getCookie("user");
-      console.log(userCookie);
-      if(loginCookie==="Success"){
-        setSignedIn(true);
-      }
-    }, []);
   
+  useEffect(() => {
+    let loginCookie = getCookie("login");
+    console.log(loginCookie);
+    let userCookie = getCookie("user");
+    console.log(userCookie);
+    if(loginCookie==="Success"){
+      setSignedIn(true);
+    }
+  }, []);
 
   const handleSignIn = () => {
     window.location.href = "http://localhost:8080/login/";
@@ -59,9 +59,12 @@ const NavBar = () => {
           {/* {signedIn || <Link to="/blogs"></Link> } */}
         </div>
 
-        <div>
+        <div className='profileContainer'>
           {signedIn || <button className='SignInButton SignButton' onClick={() => handleSignIn()}> Sign In </button>}
-          {signedIn && <button className='SignOutButton SignButton' onClick={() => handleSignOut()}> Sign Out </button>}
+          {signedIn && <div className='signedIn'>
+              <img src="../../../blankProfilePicture.png" alt="" className='profilePicture' onClick={() => setProfileDropdown(!isProfileDropdown)}/>
+              {isProfileDropdown && <ProfileDropdown />}
+            </div>}
         </div>
     </nav>
   )

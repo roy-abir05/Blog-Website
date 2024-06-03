@@ -1,4 +1,4 @@
-import React, { useState, useRef, useMemo } from 'react';
+import React, { useState, useRef, useMemo, useEffect } from 'react';
 import JoditEditor from 'jodit-react';
 import './CreateBlogs.css';
 import NavBar from '../../components/NavBar/NavBar';
@@ -34,14 +34,52 @@ const CreateBlogs = () => {
 		[],
 	   );
 
-  const handleSubmit = async () => {
+  const [title, setTitle] = useState('');
 
-    let text='{"userId": "302","title": "Title","dateAndTime":"02/06/2024","content":"<p>This is a test Blog.<br></p>","upVote":"0","downVote":"0","category":"none"}';
+  const getCookie = (cname) => {
+    const name = cname + "=";
+    const decodedCookie = decodeURIComponent(document.cookie);
+    const ca = decodedCookie.split(';');
+    for (let i = 0; i < ca.length; i++) {
+      let c = ca[i];
+      while (c.charAt(0) === ' ') {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) === 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
+  }
+
+  useEffect(() => {
+  }, []);
+
+  function getISOTimestamp() {
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = String(now.getMonth() + 1).padStart(2, '0'); // Add leading zero for single-digit months
+    const day = String(now.getDate()).padStart(2, '0'); // Add leading zero for single-digit days
+    const hours = String(now.getHours()).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    const seconds = String(now.getSeconds()).padStart(2, '0');
+    const milliseconds = String(now.getMilliseconds()).padStart(3, '0');
+  
+    return `${year}-${month}-${day}T${hours}:${minutes}:${seconds}.${milliseconds}Z`;
+  }
+  
+  // const currentISOTime = getISOTimestamp();
+  // console.log(currentISOTime); // Output: YYYY-MM-DDTHH:mm:ss.sssZ (e.g., 2024-06-04T18:22:13.123Z)
+  
+
+  const handleSubmit = async () => {
     
-    if(content===''){
+    if(content==='' || title===''){
       alert("Blog is empty")
       return
     }
+
+    let text=`{"userId": "${getCookie("userId")}","title": "${title}","createdDate":"${getISOTimestamp()}","updatedDate":"","content":"${content}","upVote":"0","downVote":0}`;
 
     console.log(text);
     let json=JSON.parse(text);
@@ -67,13 +105,12 @@ const CreateBlogs = () => {
             />
           </div>
           <div className='titleContainer'>
-            <input type="text" name="title" className='title' placeholder='Please enter the title of your blog' required maxLength={40}/>
+            <input type="text" name="title" className='title' placeholder='Please enter the title of your blog' required maxLength={40} onChange={(e)=>setTitle(e.target.value)}/>
           </div>
           <div className='postButtonContainer'>
             <button className='postButton' onClick={handleSubmit}>Post</button>
           </div>
         </div>
-        {content}
     </div>
   )
 }
