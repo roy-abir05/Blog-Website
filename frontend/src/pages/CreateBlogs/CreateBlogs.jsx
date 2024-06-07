@@ -53,9 +53,10 @@ const CreateBlogs = () => {
   }
 
   useEffect(() => {
-    const htmlWithInlineCss = '<p>This is text with <b>bold</b> formatting and <span style="color: red;">red text</span>.</p>';
-    const fixedHtml = fixHtmlForJson(htmlWithInlineCss);
-    console.log(fixedHtml);
+    let loginCookie = getCookie("login");
+    if(loginCookie!=="Success"){
+      window.location.href="http://localhost:5173"
+    }
   }, []);
 
   function getISOTimestamp() {
@@ -81,10 +82,7 @@ const CreateBlogs = () => {
 
     return fixedHtml;
   }
-  
-  // const currentISOTime = getISOTimestamp();
-  // console.log(currentISOTime); // Output: YYYY-MM-DDTHH:mm:ss.sssZ (e.g., 2024-06-04T18:22:13.123Z)
-  
+
 
   const handleSubmit = async () => {
     
@@ -93,7 +91,7 @@ const CreateBlogs = () => {
       return
     }
 
-    let text=`{"userId": "${getCookie("userId")}","title": "${title}","createdDate":"${getISOTimestamp()}","updatedDate":"${getISOTimestamp()}","content":"${content}","upVote":"0","downVote":0}`;
+    let text=`{"userId": "${getCookie("userId")}", "userName": "${getCookie("name")}", "title": "${title}","createdDate":"${getISOTimestamp()}","updatedDate":"${getISOTimestamp()}","content":"${content}","upVote":"0","downVote":"0"}`;
 
     console.log(text);
     let json=JSON.parse(fixHtmlForJson(text));
@@ -102,6 +100,10 @@ const CreateBlogs = () => {
     await axios.post('http://localhost:8080/api/posts/post/addPost', json)
       .then((response) => {
         console.log(response);
+        window.location.href="http://localhost:5173/blogs/myBlogs";
+      })
+      .catch((error) => {
+        alert(`Sorry!! Couldn't post blog at this moment:\n${error}\nPlease try again later`);
       })
   }
     

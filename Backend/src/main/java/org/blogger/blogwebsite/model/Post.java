@@ -19,6 +19,7 @@ public class Post {
     @GeneratedValue
     private Long postId;
     private Long userId;
+    private String userName;
     private String title;
 
     @Temporal(TemporalType.TIMESTAMP)

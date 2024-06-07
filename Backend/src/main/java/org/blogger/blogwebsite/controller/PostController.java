@@ -7,11 +7,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
-@RequestMapping("api/posts")
 @CrossOrigin(origins = "http://localhost:5173", allowedHeaders = "Content-Type")
+@RequestMapping("api/posts")
 public class PostController {
 
     @Autowired
@@ -30,5 +29,10 @@ public class PostController {
     @GetMapping("get/userPosts/{userId}")
     public List<Post> getUserPosts(@PathVariable(name = "userId") Long userId) {
         return postService.getPostsByUserId(userId);
+    }
+
+    @GetMapping("get/getPost/{postId}")
+    public String viewPost(@PathVariable(name = "postId") Long postId){
+        return postService.getPostbyId(postId).getContent();
     }
 }

@@ -1,8 +1,19 @@
 import React from 'react'
+import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 import './BlogCard.css'
-import { Link } from 'react-router-dom'
 
 const BlogCard = ({blog}) => {
+
+  const navigate = useNavigate();
+
+  const handleReadMore = () => {
+    axios.get(`http://localhost:8080/api/posts/get/getPost/${blog.postId}`)
+    .then((response) => {
+      navigate('/blogs/showBlog', { state: {content : response.data} });
+    })
+  }
+  
   return (
 
     <div className='blogCardContainer'>
@@ -18,7 +29,7 @@ const BlogCard = ({blog}) => {
             <span>{blog.createdDate.slice(0, 10)}</span>
           </div>
           <div className="authorContainer">
-            <span>blog.userName</span>
+            <span>{blog.userName}</span>
           </div>
         </div>
         <div className="votesContainer">
@@ -33,7 +44,7 @@ const BlogCard = ({blog}) => {
         </div>
       </div>
       <div className="blogReadMoreContainer">
-        <button className='readMoreButton'>Read More </button>
+        <button className='readMoreButton' onClick={handleReadMore}>Read More </button>
       </div>
     </div>
   )

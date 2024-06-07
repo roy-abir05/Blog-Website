@@ -102,3 +102,7 @@
     align-items: center;
     justify-content: center;
 }
+
+.blogReadMoreContainer .readMoreButton{
+    color: white;
+}

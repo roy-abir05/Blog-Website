@@ -26,9 +26,7 @@ const NavBar = () => {
   
   useEffect(() => {
     let loginCookie = getCookie("login");
-    console.log(loginCookie);
     let userCookie = getCookie("user");
-    console.log(userCookie);
     if(loginCookie==="Success"){
       setSignedIn(true);
     }
