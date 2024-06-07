@@ -1,5 +1,17 @@
-.editorContainer{
-    margin-left: 100px;
-    width: 50%;
-    height: 50%;
+.mainContainer{
+    width: 100%;
+    min-height: 100%;
+}
+
+.blogsContainer{
+
+    margin-top: 80px;
+
+    width: 100%;
+    min-height: 85%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* flex-direction: column; */
 }

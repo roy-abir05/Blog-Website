@@ -6,13 +6,24 @@
   <component name="ChangeListManager">
     <list default="true" id="f326daa6-a545-4059-a8b9-77ced13a99c6" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/blogger/blogwebsite/model/Post.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/blogger/blogwebsite/model/Post.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/blogger/blogwebsite/configuration/security/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/blogger/blogwebsite/configuration/security/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/blogger/blogwebsite/controller/PostController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/blogger/blogwebsite/controller/PostController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/blogger/blogwebsite/repository/PostRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/blogger/blogwebsite/repository/PostRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/blogger/blogwebsite/service/PostService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/blogger/blogwebsite/service/PostService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/signup.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/signup.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/blogger/blogwebsite/model/Post.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/blogger/blogwebsite/model/Post.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/blogger/blogwebsite/configuration/security/SecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/blogger/blogwebsite/configuration/security/SecurityConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/blogger/blogwebsite/controller/PostController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/blogger/blogwebsite/controller/PostController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/blogger/blogwebsite/repository/PostRepo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/blogger/blogwebsite/repository/PostRepo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/blogger/blogwebsite/service/PostService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/blogger/blogwebsite/service/PostService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/signup.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/signup.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/components/NavBar/NavBar.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/NavBar/NavBar.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/NavBar/NavBar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/NavBar/NavBar.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/pages/CreateBlogs/CreateBlogs.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/CreateBlogs/CreateBlogs.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/ListBlogs/ListBlogs.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/ListBlogs/ListBlogs.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/ListBlogs/ListBlogs.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/ListBlogs/ListBlogs.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -137,6 +148,10 @@
       <workItem from="1717409558905" duration="3487000" />
       <workItem from="1717413619003" duration="11000" />
       <workItem from="1717415968670" duration="1054000" />
+      <workItem from="1717417403192" duration="266000" />
+      <workItem from="1717647575883" duration="2733000" />
+      <workItem from="1717664061853" duration="6497000" />
+      <workItem from="1717732414611" duration="2110000" />
     </task>
     <servers />
   </component>

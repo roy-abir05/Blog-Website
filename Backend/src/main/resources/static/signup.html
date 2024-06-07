@@ -28,12 +28,11 @@
                     </div>
 
                     <div class="password">
-                        <input type="password" name="password" placeholder="Password" required>
+                        <input type="password" name="password" placeholder="Password" required autocomplete="new-password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*?[#?!@_$%^&*-\]\[]).{8,20}" title="Minimum Length = 8 Maximum Length = 20 Should contain both Uppercase and Lowercase characters Should at least one contain special character">
                     </div>
 
                     <div class="imgUrl">
-                        <input type="url" name="imgUrl" class="img" placeholder="Image Url (Optional)
-                        " value="">
+                        <input type="url" name="imgUrl" class="img" placeholder="Image Url (Optional)" value="">
                     </div>
 
                 </div>

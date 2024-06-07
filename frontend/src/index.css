@@ -43,6 +43,10 @@ body {
   /* background-repeat: no-repeat; */
 }
 
+span {
+  color: black;
+}
+
 p{
   color: black;
 }

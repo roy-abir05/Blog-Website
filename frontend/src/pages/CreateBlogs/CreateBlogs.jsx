@@ -53,6 +53,9 @@ const CreateBlogs = () => {
   }
 
   useEffect(() => {
+    const htmlWithInlineCss = '<p>This is text with <b>bold</b> formatting and <span style="color: red;">red text</span>.</p>';
+    const fixedHtml = fixHtmlForJson(htmlWithInlineCss);
+    console.log(fixedHtml);
   }, []);
 
   function getISOTimestamp() {
@@ -67,6 +70,17 @@ const CreateBlogs = () => {
   
     return `${year}-${month}-${day}T${hours}:${minutes}:${seconds}.${milliseconds}Z`;
   }
+
+  function fixHtmlForJson(htmlContent) {
+
+    // Replace inline css double quotes with single quotes
+
+    const fixedHtml = htmlContent.replace(/style="([^"]+)"/g, function(match, content) {
+      return "style='" + content.replace(/"/g, '\\"') + "'";
+    });
+
+    return fixedHtml;
+  }
   
   // const currentISOTime = getISOTimestamp();
   // console.log(currentISOTime); // Output: YYYY-MM-DDTHH:mm:ss.sssZ (e.g., 2024-06-04T18:22:13.123Z)
@@ -79,13 +93,13 @@ const CreateBlogs = () => {
       return
     }
 
-    let text=`{"userId": "${getCookie("userId")}","title": "${title}","createdDate":"${getISOTimestamp()}","updatedDate":"","content":"${content}","upVote":"0","downVote":0}`;
+    let text=`{"userId": "${getCookie("userId")}","title": "${title}","createdDate":"${getISOTimestamp()}","updatedDate":"${getISOTimestamp()}","content":"${content}","upVote":"0","downVote":0}`;
 
     console.log(text);
-    let json=JSON.parse(text);
+    let json=JSON.parse(fixHtmlForJson(text));
     console.log(json);
 
-    await axios.post('http://localhost:8080/api/post/addPost', json)
+    await axios.post('http://localhost:8080/api/posts/post/addPost', json)
       .then((response) => {
         console.log(response);
       })

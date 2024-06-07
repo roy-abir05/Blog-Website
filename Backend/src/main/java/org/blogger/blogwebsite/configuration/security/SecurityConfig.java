@@ -36,7 +36,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests( auth -> {
                     auth.requestMatchers("/**.css", "/**.png", "/**.jpeg", "/**.jpg", "/**.html").permitAll();
                     auth.requestMatchers("/error").permitAll();
-                    auth.requestMatchers("/api/post/addPost").permitAll();
+                    auth.requestMatchers("/api/posts/get/allPosts").permitAll();
                     auth.requestMatchers(HttpMethod.POST, "/signup").permitAll();
                     auth.anyRequest().authenticated();
                 }
