@@ -5,10 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
-import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
@@ -16,7 +14,6 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.List;
 
@@ -45,14 +42,14 @@ public class SecurityConfig {
                 .cors(cors -> {
                     cors.configurationSource(corsConfigurationSource());
                 })
-                .authorizeHttpRequests( auth -> {
-                    auth.requestMatchers("/**.css", "/**.png", "/**.jpeg", "/**.jpg", "/**.html").permitAll();
-                    auth.requestMatchers("/error").permitAll();
-                    auth.requestMatchers(HttpMethod.OPTIONS, "/api/**").permitAll();
-                    auth.requestMatchers("/api/**").permitAll();
-                    auth.requestMatchers(HttpMethod.POST, "/signup").permitAll();
-                    auth.anyRequest().authenticated();
-                }
+                .authorizeHttpRequests(auth -> {
+                            auth.requestMatchers("/**.css", "/**.png", "/**.jpeg", "/**.jpg", "/**.html").permitAll();
+                            auth.requestMatchers("/error").permitAll();
+                            auth.requestMatchers(HttpMethod.OPTIONS, "/api/**").permitAll();
+                            auth.requestMatchers("/api/**").permitAll();
+                            auth.requestMatchers(HttpMethod.POST, "/signup").permitAll();
+                            auth.anyRequest().authenticated();
+                        }
                 )
                 .userDetailsService(jpaUserDetailsService)
                 .formLogin(form -> {

@@ -7,22 +7,9 @@
     <list default="true" id="f326daa6-a545-4059-a8b9-77ced13a99c6" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/blogger/blogwebsite/configuration/security/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/blogger/blogwebsite/configuration/security/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/blogger/blogwebsite/controller/PostController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/blogger/blogwebsite/controller/PostController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/blogger/blogwebsite/model/Post.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/blogger/blogwebsite/model/Post.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/blogger/blogwebsite/service/PostService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/blogger/blogwebsite/service/PostService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/signup.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/signup.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/blogger/blogwebsite/configuration/security/SecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/blogger/blogwebsite/configuration/security/SecurityConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/blogger/blogwebsite/controller/PostController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/blogger/blogwebsite/controller/PostController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/blogger/blogwebsite/model/Post.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/blogger/blogwebsite/model/Post.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/blogger/blogwebsite/service/PostService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/blogger/blogwebsite/service/PostService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/signup.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/signup.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/App.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/BlogCard/BlogCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/BlogCard/BlogCard.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/NavBar/NavBar.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/NavBar/NavBar.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/ProfileDropdown/ProfileDropdown.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/ProfileDropdown/ProfileDropdown.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/CreateBlogs/CreateBlogs.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/CreateBlogs/CreateBlogs.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -156,6 +143,10 @@
       <workItem from="1717757558145" duration="1209000" />
       <workItem from="1717761336211" duration="1196000" />
       <workItem from="1717770612446" duration="1345000" />
+      <workItem from="1717774369053" duration="1182000" />
+      <workItem from="1717775576062" duration="95000" />
+      <workItem from="1717777622794" duration="2086000" />
+      <workItem from="1718210516183" duration="37000" />
     </task>
     <servers />
   </component>
