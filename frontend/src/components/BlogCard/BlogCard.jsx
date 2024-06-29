@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import './BlogCard.css'
@@ -10,7 +10,8 @@ const BlogCard = ({blog}) => {
   const handleReadMore = () => {
     axios.get(`http://localhost:8080/api/posts/get/getPost/${blog.postId}`)
     .then((response) => {
-      navigate('/blogs/showBlog', { state: {content : response.data} });
+      console.log(response.data);
+      navigate('/blogs/showBlog', { state: { blogId : blog.postId, content : response.data.content, title : response.data.title, upVotes: response.data.upVotes.length, downVotes: response.data.downVotes.length } });
     })
   }
   
@@ -34,11 +35,11 @@ const BlogCard = ({blog}) => {
         </div>
         <div className="votesContainer">
           <div className="upVoteContainer">
-            <span>{blog.upVote}</span>
             <img src="../../../public/thumbsUpIconWhite.png" alt="" />
+            <span>{blog.upVotes.length}</span>
           </div>
           <div className="downVoteContainer">
-            <span>{blog.downVote}</span>
+            <span>{blog.downVotes.length}</span>
             <img src="../../../public/thumbsDownIconWhite.png" alt="" />
           </div>
         </div>

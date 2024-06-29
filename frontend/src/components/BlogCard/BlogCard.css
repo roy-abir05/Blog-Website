@@ -29,7 +29,7 @@
     color: black;
 }
 
-.blogContentContainer{
+.blogCardContainer .blogContentContainer{
     box-sizing: border-box;
     width: 100%;
     height: 45%;
@@ -41,7 +41,7 @@
     flex-direction: column;
 }
 
-.blogContentContainer .blogDescriptionContainer{
+.blogCardContainer .blogContentContainer .blogDescriptionContainer{
     box-sizing: border-box;
     width: 100%;
 
@@ -54,14 +54,14 @@
     color: blue;
 }
 
-.blogContentContainer .votesContainer{
+.blogCardContainer .blogContentContainer .votesContainer{
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.blogContentContainer .votesContainer .upVoteContainer{
+.blogCardContainer .blogContentContainer .votesContainer .upVoteContainer{
     width: 50%;
 
     display: flex;
@@ -69,16 +69,16 @@
     justify-content: space-evenly;    
 }
 
-.blogContentContainer .votesContainer .upVoteContainer span{
+.blogCardContainer .blogContentContainer .votesContainer .upVoteContainer span{
     color: green;
 }
 
-.blogContentContainer .votesContainer .upVoteContainer img{
+.blogCardContainer .blogContentContainer .votesContainer .upVoteContainer img{
     width: 20%;
     /* height: 100%; */
 }
 
-.blogContentContainer .votesContainer .downVoteContainer{
+.blogCardContainer .blogContentContainer .votesContainer .downVoteContainer{
     width: 50%;
 
     display: flex;
@@ -86,15 +86,15 @@
     justify-content: space-evenly;
 }
 
-.blogContentContainer .votesContainer .downVoteContainer span{
+.blogCardContainer .blogContentContainer .votesContainer .downVoteContainer span{
     color: red;
 }
 
-.blogContentContainer .votesContainer .downVoteContainer img{
+.blogCardContainer .blogContentContainer .votesContainer .downVoteContainer img{
     width: 20%;
 }
 
-.blogCardContainer .blogReadMoreContainer{
+.blogsContainer .blogCardContainer .blogReadMoreContainer{
     width: 100%;
     height: 10%;
 

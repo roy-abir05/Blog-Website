@@ -1,18 +1,21 @@
 package org.blogger.blogwebsite.model;
 
+import com.fasterxml.jackson.annotation.JsonRawValue;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Getter
 @Setter
 @ToString
 @Table(name="posts")
+@AllArgsConstructor
+@NoArgsConstructor
 public class Post {
 
     @Id
@@ -28,8 +31,14 @@ public class Post {
     private Date updatedDate;
 
     @Column(columnDefinition = "text")
+    @JsonRawValue
     private String content;
-    private Long upVote;
-    private Long downVote;
+
+    @ElementCollection
+    @Column(name = "up_votes")
+    private List<Long> upVotes = new ArrayList<>();
+    @ElementCollection
+    @Column(name = "down_votes")
+    private List<Long> downVotes = new ArrayList<>();
 
 }

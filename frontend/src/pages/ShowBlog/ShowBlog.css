@@ -1,0 +1,67 @@
+.showBlogContainer{
+    width: 100%;
+    min-height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.showBlogContainer .titleContainer{
+    margin: 20px 0px;
+    width: 60%;
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    border: 1px solid black;
+    border-radius: 15px;
+    box-shadow: 0px 0px 10px 0px gray;
+}
+
+
+.showBlogContainer .titleContainer span{
+    font-size: 50px;
+    font-weight: 600;
+    font-family:'Times New Roman', Times, serif;
+}
+
+.showBlogContainer .blogContentContainer{
+    margin: 20px 0px;
+    width: 60%;
+    display: flex;
+    justify-content: center;
+}
+
+.showBlogContainer .votesContainer{
+    box-sizing: border-box;
+    margin: 20px 0px;
+    padding: 5px;
+    width: 15%;
+    height: 80px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border: 1px solid black;
+}
+
+.showBlogContainer .votesContainer img{
+    width: 50px;
+    height: 50px;
+}
+
+.showBlogContainer .votesContainer .upVoteContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.showBlogContainer .votesContainer .downVoteContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center
+}

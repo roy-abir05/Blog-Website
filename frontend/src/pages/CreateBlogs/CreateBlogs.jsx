@@ -3,6 +3,7 @@ import JoditEditor from 'jodit-react';
 import './CreateBlogs.css';
 import NavBar from '../../components/NavBar/NavBar';
 import axios from 'axios';
+import { HTMLToJSON } from 'html-to-json-parser';
 
 const CreateBlogs = () => {
 
@@ -76,9 +77,27 @@ const CreateBlogs = () => {
 
     // Replace inline css double quotes with single quotes
 
-    const fixedHtml = htmlContent.replace(/style="([^"]+)"/g, function(match, content) {
-      return "style='" + content.replace(/"/g, '\\"') + "'";
-    });
+    const parseProblemWords = ['style', 'src', 'alt', 'height', 'width'];
+
+    let fixedHtml = htmlContent;
+
+    // fixedHtml = htmlContent.replace(/style="([^"]+)"/g, function(match, content) {
+    //   return "style='" + content.replace(/"/g, '\\"') + "'";
+    // });
+
+    for(let i=0; i<parseProblemWords.length; i++){
+      console.log(parseProblemWords[i]);
+      fixedHtml = fixedHtml.replace(new RegExp(`${parseProblemWords[i]}="([^"]+)"`, 'g'), function(match, content) {
+        if(content.length==0){
+          console.log("NUll Content");
+          // return `${parseProblemWords[i]}=''`;
+        }
+        console.log(match);
+        console.log(content);
+        return content ? `${parseProblemWords[i]}='` + content.replace(/"/g, '\\"') + "'" : `${parseProblemWords[i]}=''`;
+      });
+      console.log(fixedHtml);
+    }
 
     return fixedHtml;
   }
@@ -91,10 +110,14 @@ const CreateBlogs = () => {
       return
     }
 
-    let text=`{"userId": "${getCookie("userId")}", "userName": "${getCookie("name")}", "title": "${title}","createdDate":"${getISOTimestamp()}","updatedDate":"${getISOTimestamp()}","content":"${content}","upVote":"0","downVote":"0"}`;
+    // console.log(content);
+    let htmlToJson = await HTMLToJSON("<div>"+content+"</div>", true);
+    console.log(htmlToJson);
+
+    let text=`{"userId": "${getCookie("userId")}", "userName": "${getCookie("name")}", "title": "${title}","createdDate":"${getISOTimestamp()}","updatedDate":"${getISOTimestamp()}","content":${htmlToJson},"upVote":"0","downVote":"0"}`;
 
     console.log(text);
-    let json=JSON.parse(fixHtmlForJson(text));
+    let json=JSON.parse(text);
     console.log(json);
 
     await axios.post('http://localhost:8080/api/posts/post/addPost', json)
@@ -110,6 +133,9 @@ const CreateBlogs = () => {
   return (
     <div className='containerCreateBlogs'>
         <NavBar />
+        <div className='titleContainer'>
+            <input type="text" name="title" className='title' placeholder='Please enter the title of your blog' required maxLength={40} onChange={(e)=>setTitle(e.target.value)}/>
+          </div>
         <div className='mainContainerCreateBlogs'>
           <div className='editorContainer'>
             <JoditEditor
@@ -119,9 +145,6 @@ const CreateBlogs = () => {
             onChange={newContent => setContent(newContent)}
             className='editor'
             />
-          </div>
-          <div className='titleContainer'>
-            <input type="text" name="title" className='title' placeholder='Please enter the title of your blog' required maxLength={40} onChange={(e)=>setTitle(e.target.value)}/>
           </div>
           <div className='postButtonContainer'>
             <button className='postButton' onClick={handleSubmit}>Post</button>

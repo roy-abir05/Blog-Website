@@ -25,4 +25,28 @@ public class PostService {
     public List<Post> getPostsByUserId(Long userId) { return postRepo.findAllByUserId(userId); }
 
     public Post getPostbyId(Long postId) { return postRepo.findById(postId).orElse(null); }
+
+    public Post addUpVote(Long postId, Long userId) {
+        Post post = getPostbyId(postId);
+        post.getUpVotes().add(userId);
+        return postRepo.save(post);
+    }
+
+    public Post removeUpVote(Long postId, Long userId) {
+        Post post = getPostbyId(postId);
+        post.getUpVotes().remove(userId);
+        return postRepo.save(post);
+    }
+
+    public Post addDownVote(Long postId, Long userId) {
+        Post post = getPostbyId(postId);
+        post.getDownVotes().add(userId);
+        return postRepo.save(post);
+    }
+
+    public Post removeDownVote(Long postId, Long userId) {
+        Post post = getPostbyId(postId);
+        post.getDownVotes().remove(userId);
+        return postRepo.save(post);
+    }
 }
