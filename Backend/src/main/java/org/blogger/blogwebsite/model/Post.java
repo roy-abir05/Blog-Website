@@ -5,9 +5,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.Instant;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Entity
 @Getter
@@ -36,9 +34,9 @@ public class Post {
 
     @ElementCollection
     @Column(name = "up_votes")
-    private List<Long> upVotes = new ArrayList<>();
+    private Set<Long> upVotes = new HashSet<Long>();
     @ElementCollection
     @Column(name = "down_votes")
-    private List<Long> downVotes = new ArrayList<>();
+    private Set<Long> downVotes = new HashSet<Long>();
 
 }

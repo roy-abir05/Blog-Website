@@ -6,19 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="f326daa6-a545-4059-a8b9-77ced13a99c6" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/blogger/blogwebsite/controller/PostController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/blogger/blogwebsite/controller/PostController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/blogger/blogwebsite/model/Post.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/blogger/blogwebsite/model/Post.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/blogger/blogwebsite/service/PostService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/blogger/blogwebsite/service/PostService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/blogger/blogwebsite/controller/PostController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/blogger/blogwebsite/controller/PostController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/blogger/blogwebsite/model/Post.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/blogger/blogwebsite/model/Post.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/blogger/blogwebsite/service/PostService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/blogger/blogwebsite/service/PostService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/BlogCard/BlogCard.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/BlogCard/BlogCard.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/BlogCard/BlogCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/BlogCard/BlogCard.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/NavBar/NavBar.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/NavBar/NavBar.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/CreateBlogs/CreateBlogs.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/CreateBlogs/CreateBlogs.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/pages/CreateBlogs/CreateBlogs.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/CreateBlogs/CreateBlogs.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/ShowBlog/ShowBlog.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/ShowBlog/ShowBlog.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/pages/ShowBlog/ShowBlog.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/ShowBlog/ShowBlog.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -48,27 +43,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "Spring Boot.Application.executor": "Run",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/abir/Documents/Blog Website/Backend",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "reference.settingsdialog.IDE.editor.colors.Console Font",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;Spring Boot.Application.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/abir/Documents/Blog Website/Backend&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.IDE.editor.colors.Console Font&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/resources/static" />
@@ -164,7 +159,12 @@
       <workItem from="1718863571271" duration="6973000" />
       <workItem from="1718873632811" duration="5367000" />
       <workItem from="1718901269005" duration="866000" />
-      <workItem from="1719641988461" duration="6145000" />
+      <workItem from="1719641988461" duration="6257000" />
+      <workItem from="1719723541677" duration="262000" />
+      <workItem from="1719824330655" duration="649000" />
+      <workItem from="1719832727853" duration="635000" />
+      <workItem from="1719915617072" duration="2550000" />
+      <workItem from="1719919417755" duration="33000" />
     </task>
     <servers />
   </component>

@@ -4,6 +4,10 @@ import './CreateBlogs.css';
 import NavBar from '../../components/NavBar/NavBar';
 import axios from 'axios';
 import { HTMLToJSON } from 'html-to-json-parser';
+import Editor from '../../components/Editor/Editor';
+import MDEditor from '@uiw/react-md-editor'
+import rehypeSanitize from "rehype-sanitize";
+import markdown from '@wcj/markdown-to-html';
 
 const CreateBlogs = () => {
 
@@ -73,35 +77,6 @@ const CreateBlogs = () => {
     return `${year}-${month}-${day}T${hours}:${minutes}:${seconds}.${milliseconds}Z`;
   }
 
-  function fixHtmlForJson(htmlContent) {
-
-    // Replace inline css double quotes with single quotes
-
-    const parseProblemWords = ['style', 'src', 'alt', 'height', 'width'];
-
-    let fixedHtml = htmlContent;
-
-    // fixedHtml = htmlContent.replace(/style="([^"]+)"/g, function(match, content) {
-    //   return "style='" + content.replace(/"/g, '\\"') + "'";
-    // });
-
-    for(let i=0; i<parseProblemWords.length; i++){
-      console.log(parseProblemWords[i]);
-      fixedHtml = fixedHtml.replace(new RegExp(`${parseProblemWords[i]}="([^"]+)"`, 'g'), function(match, content) {
-        if(content.length==0){
-          console.log("NUll Content");
-          // return `${parseProblemWords[i]}=''`;
-        }
-        console.log(match);
-        console.log(content);
-        return content ? `${parseProblemWords[i]}='` + content.replace(/"/g, '\\"') + "'" : `${parseProblemWords[i]}=''`;
-      });
-      console.log(fixedHtml);
-    }
-
-    return fixedHtml;
-  }
-
 
   const handleSubmit = async () => {
     
@@ -110,8 +85,9 @@ const CreateBlogs = () => {
       return
     }
 
-    // console.log(content);
-    let htmlToJson = await HTMLToJSON("<div>"+content+"</div>", true);
+    console.log(content);
+    console.log(markdown(content));
+    let htmlToJson = await HTMLToJSON("<div>"+markdown(content)+"</div>", true);
     console.log(htmlToJson);
 
     let text=`{"userId": "${getCookie("userId")}", "userName": "${getCookie("name")}", "title": "${title}","createdDate":"${getISOTimestamp()}","updatedDate":"${getISOTimestamp()}","content":${htmlToJson},"upVote":"0","downVote":"0"}`;
@@ -133,18 +109,21 @@ const CreateBlogs = () => {
   return (
     <div className='containerCreateBlogs'>
         <NavBar />
-        <div className='titleContainer'>
+        <div className='mainContainerCreateBlogs'>
+          <div className='titleContainer'>
             <input type="text" name="title" className='title' placeholder='Please enter the title of your blog' required maxLength={40} onChange={(e)=>setTitle(e.target.value)}/>
           </div>
-        <div className='mainContainerCreateBlogs'>
-          <div className='editorContainer'>
-            <JoditEditor
-            ref={editor}
+          <div className='editorContainer' data-color-mode='light'>
+          <MDEditor
             value={content}
-            config={config}
-            onChange={newContent => setContent(newContent)}
-            className='editor'
-            />
+            onChange={setContent}
+            previewOptions={{
+              rehypePlugins: [[rehypeSanitize]],
+            }}
+      className='markdownEditor'
+
+    />
+            {/* <Editor/> */}
           </div>
           <div className='postButtonContainer'>
             <button className='postButton' onClick={handleSubmit}>Post</button>

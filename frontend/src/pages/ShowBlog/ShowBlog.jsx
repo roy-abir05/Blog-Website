@@ -23,7 +23,7 @@ const ShowBlog = () => {
 
   useEffect(() => {
 
-    console.log(data);
+    setTitle(data.title);
 
     const getHTML = async () => {
       return await JSONToHTML(content);
@@ -46,8 +46,7 @@ const ShowBlog = () => {
         else
           setDownVoted(true);
 
-        // console.log(upVoted); console.log(downVoted);  
-        setTitle(response.data.title);
+        console.log(title);
         setUpVotes(response.data.upVotes.length);
         setDownVotes(response.data.downVotes.length);
       })
@@ -88,7 +87,6 @@ const ShowBlog = () => {
   const upVoteHandler = async () => {
 
     if(checkLoggedIn()===false) return;
-    checkLoggedIn();
 
     if(upVoted===true){
       await axios.put('http://localhost:8080/api/posts/put/removeUpVote', {postId : blogId, userId : Number(getCookie('userId'))})
@@ -150,7 +148,7 @@ const ShowBlog = () => {
     <div className='showBlogContainer'>
       <NavBar />
       <div className="titleContainer">
-        <span>{title}</span>
+        <span style={{color:"black"}}>{title}</span>
       </div>
       <div className="blogContentContainer">
           {jsxContent}

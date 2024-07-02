@@ -1,0 +1,12 @@
+.markdownEditorContainer{
+    /* background-color: white; */
+    height: 343.3px;
+}
+
+.markdownEditor{
+    min-height: 100%;
+}
+
+.markdown{
+    height: 100%;
+}
