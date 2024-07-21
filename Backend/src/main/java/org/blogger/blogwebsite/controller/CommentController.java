@@ -8,13 +8,13 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("comment")
+@RequestMapping("api/comments")
 public class CommentController {
 
     @Autowired
     private CommentService commentService;
 
-    @PostMapping("addComment")
+    @PostMapping("post/addComment")
     public Comment addComment(@RequestBody Comment comment) {
         return commentService.addComment(comment);
     }
@@ -23,4 +23,7 @@ public class CommentController {
     public List<Comment> allComments() {
         return commentService.getAllComments();
     }
+
+    @GetMapping("get/postComments/{postId}")
+    public List<Comment> getPostComments(@PathVariable long postId) { return commentService.getCommentsByPostId(postId); }
 }

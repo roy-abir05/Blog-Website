@@ -54,7 +54,6 @@ const NavBar = () => {
           <Link to="/"><span className='tab homeTab'>Home</span></Link>
           <Link to="/blogs/listBlogs"><span className='tab blogsTab'>Blogs</span></Link>
           <Link to="/about"><span className='tab aboutTab'>About</span></Link>
-          {/* {signedIn || <Link to="/blogs"></Link> } */}
         </div>
 
         <div className='profileContainer'>

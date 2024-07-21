@@ -5,6 +5,8 @@ import { JSONToHTML } from 'html-to-json-parser';
 import axios from 'axios'
 import './ShowBlog.css'
 import NavBar from '../../components/NavBar/NavBar';
+import CommentBox from '../../components/CommentBox/CommentBox';
+import Comment from '../../components/Comment/Comment';
 
 const ShowBlog = () => {
 
@@ -15,11 +17,13 @@ const ShowBlog = () => {
 
   const [title, setTitle] = useState('');
   const [jsxContent, setJsxContent] = useState('');
+
   const [upVotes, setUpVotes] = useState(data.upVotes);
   const [downVotes, setDownVotes] = useState(data.downVotes);
-
   const [upVoted, setUpVoted] = useState(false);
   const [downVoted, setDownVoted] = useState(false);
+
+  const [comments, setComments] = useState([]);
 
   useEffect(() => {
 
@@ -34,6 +38,17 @@ const ShowBlog = () => {
       setJsxContent(parse(html));
     }
 
+    const getComments = async () => {
+      await axios.get(`http://localhost:8080/api/comments/get/postComments/${blogId}`)
+      .then((response) => {
+        console.log(response);
+        setComments(response.data);
+      })
+      .catch((e) => {
+        console.log(`Error in fetching comments at this moment\n${e}`);
+      })
+    }
+
     const initializeBlog = async () => {
       await axios.get(`http://localhost:8080/api/posts/get/getPost/${blogId}`)
       .then((response) => {
@@ -46,7 +61,6 @@ const ShowBlog = () => {
         else
           setDownVoted(true);
 
-        console.log(title);
         setUpVotes(response.data.upVotes.length);
         setDownVotes(response.data.downVotes.length);
       })
@@ -57,6 +71,7 @@ const ShowBlog = () => {
     }
 
     initializeBlog();
+    getComments();
   }, [])
 
   const getCookie = (cname) => {
@@ -153,15 +168,27 @@ const ShowBlog = () => {
       <div className="blogContentContainer">
           {jsxContent}
       </div>
-      <div className="votesContainer">
-        <div className="upVoteContainer" onClick={upVoteHandler}>
-          {upVoted===true ? <img src="../../../public/thumbsUpIconGreen.png"/> : <img src="../../../public/thumbsUpIconWhite.png"/>}
-          <span style={{color: "green"}}>{upVotes}</span>
+      <div className='showBlogFooter'>
+        <div className="votesContainer">
+          <div className="upVoteContainer" onClick={upVoteHandler}>
+            {upVoted===true ? <img src="../../../public/thumbsUpIconGreen.png"/> : <img src="../../../public/thumbsUpIconWhite.png"/>}
+            <span style={{color: "green"}}>{upVotes}</span>
+          </div>
+          <div className="downVoteContainer" onClick={downVoteHandler}>
+            <span style={{color: "red"}}>{downVotes}</span>
+            {downVoted===true ? <img src="../../../public/thumbsDownIconRed.png"/> : <img src="../../../public/thumbsDownIconWhite.png"/>}
+          </div>
         </div>
-        <div className="downVoteContainer" onClick={downVoteHandler}>
-          <span style={{color: "red"}}>{downVotes}</span>
-          {downVoted===true ? <img src="../../../public/thumbsDownIconRed.png"/> : <img src="../../../public/thumbsDownIconWhite.png"/>}
+        <div className="commentsCount">
+          <span>{comments.length}</span>
+          <img src="../../../public/comments_icon.png"/>
         </div>
+      </div>
+      <div className="commentsSection">
+        <CommentBox blogId={blogId} userId={0}/>
+        {comments.map((comment, index) => (
+          <Comment userName="Name" dateAndTime={comment.dateAndTime} content={comment.content}/>
+        ))}
       </div>
     </div>
   )
