@@ -43,7 +43,7 @@ const MyBlogs = () => {
   return (
     <div className='myBlogsContainer'>
         <NavBar />
-        <div className='blogsContainer'>
+        <div className='blogsContainer grid grid-cols-1 md:grid-cols-2 mt-5'>
         {
           myBlogs.map((blog, index) => (<BlogCard key={index} blog={blog}/>))
         }

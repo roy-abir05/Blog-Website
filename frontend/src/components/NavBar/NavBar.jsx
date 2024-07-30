@@ -2,11 +2,16 @@ import React, { useEffect, useState } from 'react';
 import './NavBar.css';
 import { Link } from 'react-router-dom';
 import ProfileDropdown from '../ProfileDropdown/ProfileDropdown';
+import axios from 'axios';
+import { ModeToggle } from '../mode-toggle';
+import { Button } from '../ui/button';
 
 const NavBar = () => {
 
   const [signedIn, setSignedIn] = useState(false);
   const [isProfileDropdown, setProfileDropdown] = useState(false);
+
+  const [imgUrl, setImgUrl] = useState('../../../blankProfilePicture.png');
 
   const getCookie = (cname) => {
     const name = cname + "=";
@@ -23,12 +28,21 @@ const NavBar = () => {
     }
     return "";
   }
+
+  const getImgUrl = async () => {
+    await axios.get(`http://localhost:8080/api/users/get/profilePicture/${getCookie("userId")}`)
+    .then((response) => {
+      if(response.data.length==0) return;
+      setImgUrl(response.data);
+    })
+  }
   
   useEffect(() => {
     let loginCookie = getCookie("login");
     let userCookie = getCookie("user");
     if(loginCookie==="Success"){
       setSignedIn(true);
+      getImgUrl();
     }
   }, []);
 
@@ -42,25 +56,39 @@ const NavBar = () => {
   }
 
   return (
-    <nav>
+    <nav className='w-full relative flex items-center justify-between max-w-2xl mx-auto px-4 py-5'>
 
         <div className='logoContainer'>
-          <a href='/' className='logoAnchor'>
-            <img src="../../../public/blog_logo.png" alt="BlogSite" className='logoImg'/>
-          </a>
+          <Link to='/' className='logoAnchor font-bold text-3xl'>
+            {/* <img src="../../../public/blog_logo.png" alt="BlogSite" className='logoImg'/> */}
+            Cognito<span className='text-primary font-bold text-3xl'>.io</span>
+          </Link>
         </div>
 
-        <div className='tabs'>
+        {/* <div>
+          <h1>Child 1</h1>
+        </div> */}
+
+        {/* <div>
+          <h1>Child 2</h1>
+        </div> */}
+        
+
+         <div>
+           <ModeToggle />
+         </div>
+
+        {/* <div className='tabs'>
           <Link to="/"><span className='tab homeTab'>Home</span></Link>
           <Link to="/blogs/listBlogs"><span className='tab blogsTab'>Blogs</span></Link>
           <Link to="/about"><span className='tab aboutTab'>About</span></Link>
-        </div>
+        </div> */}
 
         <div className='profileContainer'>
-          {signedIn || <button className='SignInButton SignButton' onClick={() => handleSignIn()}> Sign In </button>}
+          {signedIn || <Button className='SignInButton SignButton' onClick={handleSignIn}> Sign In </Button>}
           {signedIn && <div className='signedIn'>
-              <img src="../../../blankProfilePicture.png" alt="" className='profilePicture' onClick={() => setProfileDropdown(!isProfileDropdown)}/>
-              {isProfileDropdown && <ProfileDropdown />}
+              <img src={imgUrl} alt="" className='profilePicture' onClick={() => setProfileDropdown(!isProfileDropdown)}/>
+              {isProfileDropdown && <ProfileDropdown userId={getCookie('userId')}/>}
             </div>}
         </div>
     </nav>

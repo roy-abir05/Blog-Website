@@ -1,5 +1,6 @@
 import React from 'react'
 import NavBar from '../../components/NavBar/NavBar.jsx'
+import { Button } from '@/components/ui/button.jsx';
 
 import './Home.css'
 

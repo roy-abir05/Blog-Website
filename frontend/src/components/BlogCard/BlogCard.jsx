@@ -2,6 +2,7 @@ import React, {useEffect} from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import './BlogCard.css'
+import { Button } from '../ui/button';
 
 const BlogCard = ({blog}) => {
 
@@ -22,7 +23,7 @@ const BlogCard = ({blog}) => {
         <img src="../../../public/blogCardImage.jpg" alt="" className='blogImage'/>
       </div>
       <div className='blogContentContainer'>
-        <div className='blogTitleContainer'>
+        <div className='blogTitleContainer font-bold text-tertirary'>
           <h2>{blog.title}</h2>
         </div>
         <div className='blogDescriptionContainer'>
@@ -45,7 +46,7 @@ const BlogCard = ({blog}) => {
         </div>
       </div>
       <div className="blogReadMoreContainer">
-        <button className='readMoreButton' onClick={handleReadMore}>Read More </button>
+        <Button className='readMoreButton text-tertirary' onClick={handleReadMore}>Read More </Button>
       </div>
     </div>
   )

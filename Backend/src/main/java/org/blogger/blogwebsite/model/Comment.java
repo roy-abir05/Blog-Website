@@ -19,6 +19,7 @@ public class Comment {
     private Long commentId;
     private Long postId;
     private Long userId;
+    private String userName;
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateAndTime;

@@ -6,11 +6,14 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.blogger.blogwebsite.model.SecurityUser;
 import org.blogger.blogwebsite.model.User;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
+import java.net.URLEncoder;
 
 @Component
 public class FormLoginSuccessHandler extends SavedRequestAwareAuthenticationSuccessHandler {
@@ -22,11 +25,11 @@ public class FormLoginSuccessHandler extends SavedRequestAwareAuthenticationSucc
 
         User user = securityUser.user;
 
-        Cookie loginCookie = new Cookie("login", "Success");
+        Cookie loginCookie = new Cookie("login", URLEncoder.encode("Success", "UTF-8" ));
         loginCookie.setPath("/");
         Cookie userIdCookie = new Cookie("userId", String.valueOf(user.getUserId()));
         userIdCookie.setPath("/");
-        Cookie nameCookie = new Cookie("name", user.getName());
+        Cookie nameCookie = new Cookie("name", URLEncoder.encode(user.getName(), "UTF-8"));
         nameCookie.setPath("/");
         Cookie emailCookie = new Cookie("email", user.getEmail());
         emailCookie.setPath("/");

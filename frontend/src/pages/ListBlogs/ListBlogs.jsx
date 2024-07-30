@@ -25,14 +25,14 @@ const ListBlogs = () => {
   }, []);
 
   return (
-    <div className='mainContainer'>
+     <div className='mainContainer'>
         <NavBar />
-        <div className='blogsContainer'>
+        <div className='blogsContainer grid grid-cols-1 md:grid-cols-2 mt-5'>
         {
           blogs.map((blog, index) => (<BlogCard key={index} blog={blog}/>))
         }
         </div>
-    </div>
+     </div>
   )
 }
 

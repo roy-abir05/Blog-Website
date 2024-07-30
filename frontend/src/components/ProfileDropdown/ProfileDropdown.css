@@ -1,7 +1,8 @@
 .profileDropdownListContainer{
-    width: 90px;
-    height: 80px;
-    background-color: rgba(255, 255, 255, 0.4);
+    width: 100px;
+    height: 120px;
+    background-color: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
 }
 
 .profileDropdownListContainer .profileDropdownList{
@@ -12,4 +13,6 @@
 
 .profileDropdownListContainer .profileDropdownList li a {
     color: black;
+    font-size: 18px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }

@@ -159,11 +159,22 @@ const ShowBlog = () => {
     }
   }
 
+  const getUserName = (userId) => {
+    axios.get(`http://localhost:8080/api/users/get/getUserById/${userId}`)
+    .then((response) => {
+      return response.data;
+    })
+    .catch((e) => {
+      console.log(e);
+      return "Name"
+    })
+  }
+
   return (
     <div className='showBlogContainer'>
       <NavBar />
       <div className="titleContainer">
-        <span style={{color:"black"}}>{title}</span>
+        <span className='text-tertiary'>{title}</span>
       </div>
       <div className="blogContentContainer">
           {jsxContent}
@@ -187,7 +198,7 @@ const ShowBlog = () => {
       <div className="commentsSection">
         <CommentBox blogId={blogId} userId={0}/>
         {comments.map((comment, index) => (
-          <Comment userName="Name" dateAndTime={comment.dateAndTime} content={comment.content}/>
+          <Comment userName={getUserName(comment.userId)} dateAndTime={comment.dateAndTime} content={comment.content}/>
         ))}
       </div>
     </div>

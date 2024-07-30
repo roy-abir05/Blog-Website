@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import axios from 'axios'
+import { Button } from '../ui/button';
 import './CommentBox.css'
 
-const CommentBox = ({blogId, userId}) => {
+const CommentBox = ({blogId}) => {
 
     const [comment, setComment] = useState('');
 
@@ -18,15 +19,43 @@ const CommentBox = ({blogId, userId}) => {
       
         return `${year}-${month}-${day}T${hours}:${minutes}:${seconds}.${milliseconds}Z`;
       }
+    
+      const getCookie = (cname) => {
+        const name = cname + "=";
+        const decodedCookie = decodeURIComponent(document.cookie);
+        const ca = decodedCookie.split(';');
+        for (let i = 0; i < ca.length; i++) {
+          let c = ca[i];
+          while (c.charAt(0) === ' ') {
+            c = c.substring(1);
+          }
+          if (c.indexOf(name) === 0) {
+            return c.substring(name.length, c.length);
+          }
+        }
+        return "";
+      }
+      
+      const checkLoggedIn = () => {
+        let loginCookie = getCookie("login");
+        if(loginCookie!=="Success"){
+          alert("Make your Opinion count. Log In");
+          return false;
+        }
+        return true;
+      }
 
     const handleSubmit = async () => {
+        if(!checkLoggedIn()){
+          return;
+        }
         console.log(comment);
         if(comment.length===0){
             alert('Comment is empty');
             return;
         }
 
-        let data = `{"postId": ${blogId}, "userId": ${userId}, "dateAndTime": "${getISOTimestamp()}", "content": "${comment}"}`;
+        let data = `{"postId": ${blogId}, "userId": ${getCookie("userId")}, "dateAndTime": "${getISOTimestamp()}", "content": "${comment}"}`;
 
         console.log(data);
 
@@ -34,7 +63,7 @@ const CommentBox = ({blogId, userId}) => {
           'Content-Type': 'application/json'
       }})
         .then(() => {
-            alert("Comment posted successfully");
+            // alert("Comment posted successfully");
             window.location.reload();
         })
         .catch((e) => {
@@ -44,8 +73,8 @@ const CommentBox = ({blogId, userId}) => {
 
   return (
     <div className='commentBoxContainer'>
-        <textarea className='commentBoxEditor' placeholder='Share Your Opinion....' onChange={(e) => setComment(e.target.value)}></textarea>
-        <button className='commentSubmit' onClick={handleSubmit}>Submit</button>
+        <textarea className='commentBoxEditor border-tertiary' placeholder='Share Your Opinion....' onChange={(e) => setComment(e.target.value)}></textarea>
+        <Button className='commentSubmit mt-4 font-bold text-tertiary' onClick={handleSubmit}>Submit</Button>
     </div>
   )
 }
