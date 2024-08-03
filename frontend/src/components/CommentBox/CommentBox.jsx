@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import { Button } from '../ui/button';
 import './CommentBox.css'
+import utf8 from 'utf8'
 
 const CommentBox = ({blogId}) => {
 
@@ -55,16 +56,19 @@ const CommentBox = ({blogId}) => {
             return;
         }
 
-        let data = `{"postId": ${blogId}, "userId": ${getCookie("userId")}, "dateAndTime": "${getISOTimestamp()}", "content": "${comment}"}`;
+        let data = `{"postId": ${blogId}, "userId": ${getCookie("userId")}, "userName": "${utf8.decode(getCookie("name"))}", "dateAndTime": "${getISOTimestamp()}", "content": "${comment}"}`;
 
         console.log(data);
 
-        await axios.post('http://localhost:8080/api/comments/post/addComment', data, {headers: {
+        await axios.post('http://localhost:8080/api/comments/post/addComment', data, { headers: {
           'Content-Type': 'application/json'
-      }})
-        .then(() => {
-            // alert("Comment posted successfully");
-            window.location.reload();
+        },
+        withCredentials: true 
+        })
+        .then((response) => {
+            console.log(response.data);
+            alert("Comment posted successfully");
+            // window.location.reload();
         })
         .catch((e) => {
             alert(`Error in posting comment at this moment\n${e}`);
@@ -73,7 +77,7 @@ const CommentBox = ({blogId}) => {
 
   return (
     <div className='commentBoxContainer'>
-        <textarea className='commentBoxEditor border-tertiary' placeholder='Share Your Opinion....' onChange={(e) => setComment(e.target.value)}></textarea>
+        <textarea className='commentBoxEditor border-tertiary text-black' placeholder='Share Your Opinion....' onChange={(e) => setComment(e.target.value)}></textarea>
         <Button className='commentSubmit mt-4 font-bold text-tertiary' onClick={handleSubmit}>Submit</Button>
     </div>
   )

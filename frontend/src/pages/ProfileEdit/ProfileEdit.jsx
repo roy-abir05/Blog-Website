@@ -4,12 +4,16 @@ import { useParams } from 'react-router-dom'
 import { ref, uploadBytes, getDownloadURL, deleteObject } from "firebase/storage";
 import { storage } from "../../configurations/firebase.js";
 import utf8 from "utf8";
+import { Input } from '@/components/ui/input.jsx';
+import { Label } from '@/components/ui/label.jsx';
+import { Button } from '@/components/ui/button.jsx';
 
 const ProfileEdit = () => {
 
   const {userId} = useParams();
 
   const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [imageUpload, setImageUpload] = useState(null);
 
@@ -38,19 +42,18 @@ const ProfileEdit = () => {
     return true;
   }
 
-  const setUserInfo = async () => {
-	await axios.get(`http://localhost:8080/api/users/get/getUserNameById/${userId}`)
-	.then((response) => setName(response.data))
-	.catch((e) => {
-		setName(getCookie("name"));
-	})
-
-	await axios.get(`http://localhost:8080/api/users/get/getPasswordById/${userId}`)
-	.then((response) => setPassword(response.data))
-	.catch((e) => {
-		setName("");
-	})
-	
+  const getUserInfo = async () => {
+    await axios.get(`http://localhost:8080/api/users/get/getUserById/${userId}`)
+    .then((response) => {
+        // console.log(response.data);
+        setName(response.data.name);
+        setEmail(response.data.email);
+        setPassword(response.data.password);
+        if(response.data.imgUrl==null) return;
+    })
+    .catch((e) => {
+        alert(`Error in fetching user information at this moment\n${e}`);
+    })
   }
 
   const deleteImage = (name) => {
@@ -94,25 +97,32 @@ const ProfileEdit = () => {
 		window.location.href = "http://localhost:5173";
 		return;
 	}
-	setUserInfo();
+	// setUserInfo();
+  getUserInfo();
   }, []);
 
   return (
-    <div className='profileEditContainer'>
+    <div className='profileEditContainer w-full h-screen flex flex-col items-center justify-evenly'>
       <div className='profileNameContainer'>
-        <span>Name: </span>
-        <input type="text" name="name" value={utf8.decode(name)} onChange={(e)=>setName(e.target.value)}/>
+        <Label htmlFor="name">Name:</Label>
+        <Input type="text" name="name" value={utf8.decode(name)} onChange={(e)=>setName(e.target.value)}/>
+      </div>
+      <div>
+        <Label htmlFor="email">Email:</Label>
+        <Input disabled type="email" id="email" value={email} />
       </div>
       <div className='profilePasswordContainer'>
-        <span>Password: </span>
-        <input type="password" name="password" value={password} placeholder="Password" required autoComplete="new-password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*?[#?!@_$%^&*-\]\[]).{8,20}" title="Minimum Length = 8 Maximum Length = 20 Should contain both Uppercase and Lowercase characters Should at least one contain special character" onChange={(e)=>setPassword(e.target.value)}/>
+        <Label htmlFor="password">Password:</Label>
+        <Input type="password" name="password" value={password} placeholder="Password" required autoComplete="new-password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*?[#?!@_$%^&*-\]\[]).{8,20}" title="Minimum Length = 8 Maximum Length = 20 Should contain both Uppercase and Lowercase characters Should at least one contain special character" onChange={(e)=>setPassword(e.target.value)}/>
       </div>
       <div className='profileImageContainer'>
 	  	<input type="checkbox" id="imageChange" checked={isChangeImageChecked} name="imageChange" onChange={() => setIsChangeImageChecked(!isChangeImageChecked)} style={{width: "25px", height: "25px"}}/>
     	<label htmlFor="imageChange">Change Image</label>
         <input type="file" accept='image/jpg' name="img" onChange={(event) => setImageUpload(event.target.files[0])}/>
+      </div >
+      <div className='w-full flex justify-center'>
+        <Button type="submit" onClick={handleSubmit}>Save</Button>
       </div>
-      <button type="submit" onClick={handleSubmit}>Save</button>
     </div>
   )
 }

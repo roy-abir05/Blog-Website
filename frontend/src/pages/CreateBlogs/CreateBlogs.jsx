@@ -8,6 +8,7 @@ import Editor from '../../components/Editor/Editor';
 import MDEditor from '@uiw/react-md-editor'
 import rehypeSanitize from "rehype-sanitize";
 import markdown from '@wcj/markdown-to-html';
+import utf8 from 'utf8'
 
 const CreateBlogs = () => {
 
@@ -90,13 +91,13 @@ const CreateBlogs = () => {
     let htmlToJson = await HTMLToJSON("<div>"+markdown(content)+"</div>", true);
     console.log(htmlToJson);
 
-    let text=`{"userId": "${getCookie("userId")}", "userName": "${getCookie("name")}", "title": "${title}","createdDate":"${getISOTimestamp()}","updatedDate":"${getISOTimestamp()}","content":${htmlToJson},"upVote":"0","downVote":"0"}`;
+    let text=`{"userId": "${utf8.decode(getCookie("userId"))}", "userName": "${getCookie("name")}", "title": "${title}","createdDate":"${getISOTimestamp()}","updatedDate":"${getISOTimestamp()}","content":${htmlToJson},"upVote":"0","downVote":"0"}`;
 
     console.log(text);
     let json=JSON.parse(text);
     console.log(json);
 
-    await axios.post('http://localhost:8080/api/posts/post/addPost', json)
+    await axios.post('http://localhost:8080/api/posts/post/addPost', json, { withCredentials: true })
       .then((response) => {
         console.log(response);
         window.location.href="http://localhost:5173/blogs/myBlogs";
@@ -107,7 +108,7 @@ const CreateBlogs = () => {
   }
     
   return (
-    <div className='containerCreateBlogs'>
+    <div className='containerCreateBlogs mt-20'>
         <NavBar />
         <div className='mainContainerCreateBlogs'>
           <div className='titleContainer'>

@@ -14,6 +14,7 @@ import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 
 @Component
 public class FormLoginSuccessHandler extends SavedRequestAwareAuthenticationSuccessHandler {
@@ -25,11 +26,11 @@ public class FormLoginSuccessHandler extends SavedRequestAwareAuthenticationSucc
 
         User user = securityUser.user;
 
-        Cookie loginCookie = new Cookie("login", URLEncoder.encode("Success", "UTF-8" ));
+        Cookie loginCookie = new Cookie("login", "Success");
         loginCookie.setPath("/");
         Cookie userIdCookie = new Cookie("userId", String.valueOf(user.getUserId()));
         userIdCookie.setPath("/");
-        Cookie nameCookie = new Cookie("name", URLEncoder.encode(user.getName(), "UTF-8"));
+        Cookie nameCookie = new Cookie("name", URLEncoder.encode(user.getName(), StandardCharsets.UTF_8).replaceAll("\\+", "%20"));
         nameCookie.setPath("/");
         Cookie emailCookie = new Cookie("email", user.getEmail());
         emailCookie.setPath("/");

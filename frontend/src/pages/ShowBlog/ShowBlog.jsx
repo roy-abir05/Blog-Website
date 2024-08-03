@@ -104,7 +104,7 @@ const ShowBlog = () => {
     if(checkLoggedIn()===false) return;
 
     if(upVoted===true){
-      await axios.put('http://localhost:8080/api/posts/put/removeUpVote', {postId : blogId, userId : Number(getCookie('userId'))})
+      await axios.put('http://localhost:8080/api/posts/put/removeUpVote', {postId : blogId, userId : Number(getCookie('userId'))}, {withCredentials: true})
       .then((response)=>{
         console.log(response);
       })
@@ -115,7 +115,14 @@ const ShowBlog = () => {
       setUpVotes(upVotes-1);
     }
     else{
-      await axios.put('http://localhost:8080/api/posts/put/addUpVote', {postId : blogId, userId : Number(getCookie('userId'))})
+      await axios.put('http://localhost:8080/api/posts/put/addUpVote', {postId : blogId, userId : Number(getCookie('userId'))}, {withCredentials: true})
+      .then((response)=>{
+        console.log(response);
+      })
+      .catch((e) => {
+        alert(`Error in Up Voting\n${e}\nPlease try again later`);
+      })
+      await axios.put('http://localhost:8080/api/posts/put/removeDownVote', {postId : blogId, userId : Number(getCookie('userId'))}, {withCredentials: true})
       .then((response)=>{
         console.log(response);
       })
@@ -134,7 +141,7 @@ const ShowBlog = () => {
     if(checkLoggedIn()===false) return;
     
     if(downVoted===true){
-      await axios.put('http://localhost:8080/api/posts/put/removeDownVote', {postId : blogId, userId : Number(getCookie('userId'))})
+      await axios.put('http://localhost:8080/api/posts/put/removeDownVote', {postId : blogId, userId : Number(getCookie('userId'))}, {withCredentials: true})
       .then((response)=>{
         console.log(response);
       })
@@ -145,7 +152,14 @@ const ShowBlog = () => {
       setDownVotes(downVotes-1);
     }
     else{
-      await axios.put('http://localhost:8080/api/posts/put/addDownVote', {postId : blogId, userId : Number(getCookie('userId'))})
+      await axios.put('http://localhost:8080/api/posts/put/addDownVote', {postId : blogId, userId : Number(getCookie('userId'))}, {withCredentials: true})
+      .then((response)=>{
+        console.log(response);
+      })
+      .catch((e) => {
+        alert(`Error in Up Voting\n${e}\nPlease try again later`);
+      })
+      await axios.put('http://localhost:8080/api/posts/put/removeUpVote', {postId : blogId, userId : Number(getCookie('userId'))}, {withCredentials: true})
       .then((response)=>{
         console.log(response);
       })
@@ -159,47 +173,38 @@ const ShowBlog = () => {
     }
   }
 
-  const getUserName = (userId) => {
-    axios.get(`http://localhost:8080/api/users/get/getUserById/${userId}`)
-    .then((response) => {
-      return response.data;
-    })
-    .catch((e) => {
-      console.log(e);
-      return "Name"
-    })
-  }
-
   return (
-    <div className='showBlogContainer'>
+    <div className='showBlogContainer w-screen'>
       <NavBar />
-      <div className="titleContainer">
-        <span className='text-tertiary'>{title}</span>
-      </div>
-      <div className="blogContentContainer">
-          {jsxContent}
-      </div>
-      <div className='showBlogFooter'>
-        <div className="votesContainer">
-          <div className="upVoteContainer" onClick={upVoteHandler}>
-            {upVoted===true ? <img src="../../../public/thumbsUpIconGreen.png"/> : <img src="../../../public/thumbsUpIconWhite.png"/>}
-            <span style={{color: "green"}}>{upVotes}</span>
+      <div className='w-4/5 flex flex-col items-center mt-20'>
+        <div className="titleContainer">
+          <span className='text-tertiary'>{title}</span>
+        </div>
+        <div className="blogContentContainer">
+            {jsxContent}
+        </div>
+        <div className='showBlogFooter'>
+          <div className="votesContainer">
+            <div className="upVoteContainer" onClick={upVoteHandler}>
+              {upVoted===true ? <img src="../../../public/thumbsUpIconGreen.png"/> : <img src="../../../public/thumbsUpIconWhite.png"/>}
+              <span style={{color: "green"}}>{upVotes}</span>
+            </div>
+            <div className="downVoteContainer" onClick={downVoteHandler}>
+              <span style={{color: "red"}}>{downVotes}</span>
+              {downVoted===true ? <img src="../../../public/thumbsDownIconRed.png"/> : <img src="../../../public/thumbsDownIconWhite.png"/>}
+            </div>
           </div>
-          <div className="downVoteContainer" onClick={downVoteHandler}>
-            <span style={{color: "red"}}>{downVotes}</span>
-            {downVoted===true ? <img src="../../../public/thumbsDownIconRed.png"/> : <img src="../../../public/thumbsDownIconWhite.png"/>}
+          <div className="commentsCount">
+            <span>{comments.length}</span>
+            <img src="../../../public/comments_icon.png"/>
           </div>
         </div>
-        <div className="commentsCount">
-          <span>{comments.length}</span>
-          <img src="../../../public/comments_icon.png"/>
+        <div className="commentsSection">
+          <CommentBox blogId={blogId} userId={0}/>
+          {comments.map((comment, index) => (
+            <Comment key={index} userName={comment.userName} dateAndTime={comment.dateAndTime} content={comment.content}/>
+          ))}
         </div>
-      </div>
-      <div className="commentsSection">
-        <CommentBox blogId={blogId} userId={0}/>
-        {comments.map((comment, index) => (
-          <Comment userName={getUserName(comment.userId)} dateAndTime={comment.dateAndTime} content={comment.content}/>
-        ))}
       </div>
     </div>
   )

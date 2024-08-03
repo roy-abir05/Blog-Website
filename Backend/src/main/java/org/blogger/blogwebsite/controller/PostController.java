@@ -21,7 +21,6 @@ import java.util.LinkedHashMap;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:5173", allowedHeaders = "Content-Type")
 @RequestMapping("api/posts")
 public class PostController {
 

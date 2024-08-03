@@ -47,7 +47,9 @@ public class SecurityConfig {
                             auth.requestMatchers("/**.css", "/**.png", "/**.jpeg", "/**.jpg", "/**.html").permitAll();
                             auth.requestMatchers("/error").permitAll();
                             auth.requestMatchers(HttpMethod.OPTIONS, "/api/**").permitAll();
-                            auth.requestMatchers("/api/**").permitAll();
+                            auth.requestMatchers("/api/users/get/**").permitAll();
+                            auth.requestMatchers("/api/posts/get/**").permitAll();
+                            auth.requestMatchers("/api/comments/get/**").permitAll();
                             auth.requestMatchers(HttpMethod.POST, "/signup").permitAll();
                             auth.anyRequest().authenticated();
                         }
@@ -77,6 +79,7 @@ public class SecurityConfig {
         configuration.setAllowedOrigins(Arrays.asList("http://localhost:5173"));
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"));
         configuration.setAllowedHeaders(List.of("Authorization", "Content-Type"));
+        configuration.setAllowCredentials(true);
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
         return source;

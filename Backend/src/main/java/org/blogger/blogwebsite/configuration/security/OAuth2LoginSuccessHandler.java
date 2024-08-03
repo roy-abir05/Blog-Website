@@ -13,6 +13,8 @@ import org.springframework.security.web.authentication.SavedRequestAwareAuthenti
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.Map;
 
 @Component
@@ -54,7 +56,7 @@ public class OAuth2LoginSuccessHandler extends SavedRequestAwareAuthenticationSu
                     userIdCookie.setPath("/");
                     response.addCookie(userIdCookie);
                 }, () -> {});
-        Cookie nameCookie = new Cookie("name", name);
+        Cookie nameCookie = new Cookie("name", URLEncoder.encode(name, StandardCharsets.UTF_8).replaceAll("\\+", "%20"));
         nameCookie.setPath("/");
         Cookie emailCookie = new Cookie("email", email);
         emailCookie.setPath("/");

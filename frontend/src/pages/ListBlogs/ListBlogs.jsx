@@ -25,7 +25,7 @@ const ListBlogs = () => {
   }, []);
 
   return (
-     <div className='mainContainer'>
+     <div className='mainContainer mt-20'>
         <NavBar />
         <div className='blogsContainer grid grid-cols-1 md:grid-cols-2 mt-5'>
         {

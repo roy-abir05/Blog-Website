@@ -3,10 +3,20 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import './BlogCard.css'
 import { Button } from '../ui/button';
+import utf8 from 'utf8'
 
 const BlogCard = ({blog}) => {
 
   const navigate = useNavigate();
+
+  console.log(blog.userName);
+  console.log(utf8.decode(blog.userName));
+
+  // function decodeUtf8Data(data) {
+  //   const decoder = new TextDecoder();
+  //   const decodedString = decoder.decode(data);
+  //   return decodedString;
+  // }
 
   const handleReadMore = () => {
     axios.get(`http://localhost:8080/api/posts/get/getPost/${blog.postId}`)
@@ -31,7 +41,7 @@ const BlogCard = ({blog}) => {
             <span>{blog.createdDate.slice(0, 10)}</span>
           </div>
           <div className="authorContainer">
-            <span>{blog.userName}</span>
+            <span>{utf8.decode(blog.userName)}</span>
           </div>
         </div>
         <div className="votesContainer">
