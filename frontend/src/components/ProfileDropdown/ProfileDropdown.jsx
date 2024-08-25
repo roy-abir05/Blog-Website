@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom';
 import './ProfileDropdown.css'
 import {
@@ -17,13 +17,17 @@ import {
 
 const ProfileDropdown = ({userId, imgUrl}) => {
 
+  useEffect(() => {
+    console.log(imgUrl);
+  })
+
   return (
     // <div className='profileDropdownListContainer'>
     //     <ul className='profileDropdownList'>
     //       <li><Link to={`/profile/${userId}`}>Profile</Link></li>
     //         <li><Link to='/blogs/createBlogs'>Create Blog</Link></li>
     //         <li><Link to='/blogs/myBlogs'>My Blogs</Link></li>
-    //         <li><Link to="http://localhost:8080/logout">Sign Out</Link></li>
+    //         <li><Link to={`${import.meta.env.VITE_API_URL}/logout`}>Sign Out</Link></li>
     //     </ul>
     // </div>
 
@@ -53,7 +57,7 @@ const ProfileDropdown = ({userId, imgUrl}) => {
           </Link>
         </DropdownMenuItem>
         <DropdownMenuItem>
-          <Link to="http://localhost:8080/logout">
+          <Link to={`${import.meta.env.VITE_API_URL}/logout`}>
             <LogOut className="inline-block mr-2"/>
             <span style={{display : "inline-block"}}>Sign Out</span>
           </Link>

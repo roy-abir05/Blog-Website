@@ -9,7 +9,7 @@ const Login = () => {
 
     console.log("Inside Submit");
     
-    await axios.post("http://localhost:8080/login", formData, {
+    await axios.post(`${import.meta.env.VITE_API_URL}/login`, formData, {
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded'
       }
@@ -58,12 +58,12 @@ const Login = () => {
             </div>
 
         <div className="googleOAuth">
-            <a href="http://localhost:8080/oauth2/authorization/google"><img src="./googleLogo.png" alt=""/></a>
-            <a href="http://localhost:8080/oauth2/authorization/google" className="googleSignIn">Sign In With Google</a>
+            <a href={`${import.meta.env.VITE_API_URL}/oauth2/authorization/google`}><img src="./googleLogo.png" alt=""/></a>
+            <a href={`${import.meta.env.VITE_API_URL}/oauth2/authorization/google`} className="googleSignIn">Sign In With Google</a>
         </div>
 
         <div className="signup">
-            <p className="signupText">New Here?</p><a href="http://localhost:5173/signup" className="signupLink">Sign Up</a>
+            <p className="signupText">New Here?</p><a href={`${import.meta.env.VITE_URL}/signup`} className="signupLink">Sign Up</a>
         </div>
     </div>
     </>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import { ref, uploadBytes, getDownloadURL, deleteObject } from "firebase/storage";
 import { storage } from "../../configurations/firebase.js";
 import utf8 from "utf8";
@@ -18,6 +18,8 @@ const ProfileEdit = () => {
   const [imageUpload, setImageUpload] = useState(null);
 
   const [isChangeImageChecked, setIsChangeImageChecked] = useState(false);
+
+  const navigate = useNavigate();
 
   const getCookie = (cname) => {
     const name = cname + "=";
@@ -43,7 +45,7 @@ const ProfileEdit = () => {
   }
 
   const getUserInfo = async () => {
-    await axios.get(`http://localhost:8080/api/users/get/getUserById/${userId}`)
+    await axios.get(`${import.meta.env.VITE_API_URL}/api/users/get/getUserById/${userId}`)
     .then((response) => {
         // console.log(response.data);
         setName(response.data.name);
@@ -56,9 +58,16 @@ const ProfileEdit = () => {
     })
   }
 
-  const deleteImage = (name) => {
+  const deleteImage = async (name) => {
     let imageRef = ref(storage, `userProfileImages/${name}`);
-    deleteObject(imageRef).then(()=>{}).catch((e)=>console.log("Firebase:\n", e)); 
+    deleteObject(imageRef).then(()=>{}).catch((e)=>console.log("Firebase:\n", e));
+    await axios.patch(`${import.meta.env.VITE_API_URL}/api/users/update/profilePicture/${name}`, "", {     withCredentials: true,
+          // headers: {
+          //   'Content-Type': 'text/plain'
+          // }
+        })
+        .then((response) => console.log(response))
+
   }
 
   const uploadFile = async (name) => {
@@ -67,7 +76,7 @@ const ProfileEdit = () => {
     uploadBytes(imageRef, imageUpload).then((snapshot) => {
       getDownloadURL(snapshot.ref).then(async (url) => {
         console.log(url);
-        await axios.patch(`http://localhost:8080/api/users/update/profilePicture/${name}`, url, {
+        await axios.patch(`${import.meta.env.VITE_API_URL}/api/users/update/profilePicture/${name}`, url, {     withCredentials: true,
           headers: {
             'Content-Type': 'text/plain'
           }
@@ -81,11 +90,18 @@ const ProfileEdit = () => {
 
 	let data = `{"name": "${name}", "password": "${password}"}`;
 
-	await axios.patch(`http://localhost:8080/api/users/update/userInfo/${getCookie("userId")}`, JSON.parse(data))
+	await axios.patch(`${import.meta.env.VITE_API_URL}/api/users/update/userInfo/${getCookie("userId")}`, JSON.parse(data), { withCredentials: true })
 	.then((response) => {
-	if(isChangeImageChecked===false) return;
+	if(isChangeImageChecked===false){
+    navigate('/');
+    return;
+  }
+    console.log("Change Image");
     deleteImage(userId);
+    console.log("Image Deleted");
     uploadFile(userId);
+    console.log("Image Added");
+    navigate('/')
 	})
 	.catch((e) => {
 		alert(e);
@@ -94,7 +110,7 @@ const ProfileEdit = () => {
 
   useEffect(() => {
     if(checkLoggedIn===false){
-		window.location.href = "http://localhost:5173";
+		window.location.href = `${import.meta.env.VITE_URL}`;
 		return;
 	}
 	// setUserInfo();

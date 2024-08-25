@@ -9,14 +9,14 @@ const ListBlogs = () => {
   const [blogs, setBlogs] = useState([]);
 
   const getBlogs = async () => {
-    await axios.get('http://localhost:8080/api/posts/get/allPosts')
+    await axios.get(`${import.meta.env.VITE_API_URL}/api/posts/get/allPosts`)
     .then((response) => {
       setBlogs(response.data);
       console.log(response.data);
     })
     .catch((exception)=>{
       alert("Error in getting blogs");
-      window.location.href='http://localhost:5173';
+      window.location.href=`${import.meta.env.VITE_URL}`;
     })
   }
 

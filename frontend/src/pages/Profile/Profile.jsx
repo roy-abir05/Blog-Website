@@ -38,7 +38,7 @@ const Profile = () => {
     }
 
     const getUserInfo = async () => {
-        await axios.get(`http://localhost:8080/api/users/get/getUserById/${userId}`)
+        await axios.get(`${import.meta.env.VITE_API_URL}/api/users/get/getUserById/${userId}`)
         .then((response) => {
             console.log(response.data);
             setUserName(response.data.name);

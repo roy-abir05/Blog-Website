@@ -61,7 +61,7 @@ const CreateBlogs = () => {
   useEffect(() => {
     let loginCookie = getCookie("login");
     if(loginCookie!=="Success"){
-      window.location.href="http://localhost:5173"
+      window.location.href=`${import.meta.env.VITE_URL}`
     }
   }, []);
 
@@ -97,10 +97,10 @@ const CreateBlogs = () => {
     let json=JSON.parse(text);
     console.log(json);
 
-    await axios.post('http://localhost:8080/api/posts/post/addPost', json, { withCredentials: true })
+    await axios.post(`${import.meta.env.VITE_API_URL}/api/posts/post/addPost`, json, { withCredentials: true })
       .then((response) => {
         console.log(response);
-        window.location.href="http://localhost:5173/blogs/myBlogs";
+        window.location.href=`${import.meta.env.VITE_URL}blogs/myBlogs`;
       })
       .catch((error) => {
         alert(`Sorry!! Couldn't post blog at this moment:\n${error}\nPlease try again later`);

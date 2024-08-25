@@ -39,7 +39,7 @@ const ShowBlog = () => {
     }
 
     const getComments = async () => {
-      await axios.get(`http://localhost:8080/api/comments/get/postComments/${blogId}`)
+      await axios.get(`${import.meta.env.VITE_API_URL}/api/comments/get/postComments/${blogId}`)
       .then((response) => {
         console.log(response);
         setComments(response.data);
@@ -50,7 +50,7 @@ const ShowBlog = () => {
     }
 
     const initializeBlog = async () => {
-      await axios.get(`http://localhost:8080/api/posts/get/getPost/${blogId}`)
+      await axios.get(`${import.meta.env.VITE_API_URL}/api/posts/get/getPost/${blogId}`)
       .then((response) => {
         if(response.data.upVotes.includes(Number(getCookie('userId')))===false)
           setUpVoted(false);
@@ -104,7 +104,7 @@ const ShowBlog = () => {
     if(checkLoggedIn()===false) return;
 
     if(upVoted===true){
-      await axios.put('http://localhost:8080/api/posts/put/removeUpVote', {postId : blogId, userId : Number(getCookie('userId'))}, {withCredentials: true})
+      await axios.put(`${import.meta.env.VITE_API_URL}/api/posts/put/removeUpVote`, {postId : blogId, userId : Number(getCookie('userId'))}, {withCredentials: true})
       .then((response)=>{
         console.log(response);
       })
@@ -115,14 +115,14 @@ const ShowBlog = () => {
       setUpVotes(upVotes-1);
     }
     else{
-      await axios.put('http://localhost:8080/api/posts/put/addUpVote', {postId : blogId, userId : Number(getCookie('userId'))}, {withCredentials: true})
+      await axios.put(`${import.meta.env.VITE_API_URL}/api/posts/put/addUpVote`, {postId : blogId, userId : Number(getCookie('userId'))}, {withCredentials: true})
       .then((response)=>{
         console.log(response);
       })
       .catch((e) => {
         alert(`Error in Up Voting\n${e}\nPlease try again later`);
       })
-      await axios.put('http://localhost:8080/api/posts/put/removeDownVote', {postId : blogId, userId : Number(getCookie('userId'))}, {withCredentials: true})
+      await axios.put(`${import.meta.env.VITE_API_URL}/api/posts/put/removeDownVote`, {postId : blogId, userId : Number(getCookie('userId'))}, {withCredentials: true})
       .then((response)=>{
         console.log(response);
       })
@@ -141,7 +141,7 @@ const ShowBlog = () => {
     if(checkLoggedIn()===false) return;
     
     if(downVoted===true){
-      await axios.put('http://localhost:8080/api/posts/put/removeDownVote', {postId : blogId, userId : Number(getCookie('userId'))}, {withCredentials: true})
+      await axios.put(`${import.meta.env.VITE_API_URL}/api/posts/put/removeDownVote`, {postId : blogId, userId : Number(getCookie('userId'))}, {withCredentials: true})
       .then((response)=>{
         console.log(response);
       })
@@ -152,14 +152,14 @@ const ShowBlog = () => {
       setDownVotes(downVotes-1);
     }
     else{
-      await axios.put('http://localhost:8080/api/posts/put/addDownVote', {postId : blogId, userId : Number(getCookie('userId'))}, {withCredentials: true})
+      await axios.put(`${import.meta.env.VITE_API_URL}/api/posts/put/addDownVote`, {postId : blogId, userId : Number(getCookie('userId'))}, {withCredentials: true})
       .then((response)=>{
         console.log(response);
       })
       .catch((e) => {
         alert(`Error in Up Voting\n${e}\nPlease try again later`);
       })
-      await axios.put('http://localhost:8080/api/posts/put/removeUpVote', {postId : blogId, userId : Number(getCookie('userId'))}, {withCredentials: true})
+      await axios.put(`${import.meta.env.VITE_API_URL}/api/posts/put/removeUpVote`, {postId : blogId, userId : Number(getCookie('userId'))}, {withCredentials: true})
       .then((response)=>{
         console.log(response);
       })
@@ -202,7 +202,7 @@ const ShowBlog = () => {
         <div className="commentsSection">
           <CommentBox blogId={blogId} userId={0}/>
           {comments.map((comment, index) => (
-            <Comment key={index} userName={comment.userName} dateAndTime={comment.dateAndTime} content={comment.content}/>
+            <Comment key={index} userId={comment.userId} userName={comment.userName} dateAndTime={comment.dateAndTime} content={comment.content}/>
           ))}
         </div>
       </div>

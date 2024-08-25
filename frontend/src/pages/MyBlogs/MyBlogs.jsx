@@ -25,14 +25,14 @@ const MyBlogs = () => {
   }
 
   const getMyBlogs = async () => {
-    await axios.get(`http://localhost:8080/api/posts/get/userPosts/${getCookie("userId")}`)
+    await axios.get(`${import.meta.env.VITE_API_URL}/api/posts/get/userPosts/${getCookie("userId")}`)
     .then((response) => {
       setMyBlogs(response.data);
       console.log(response.data);
     })
     .catch((exception)=>{
       alert("Error in getting blogs");
-      window.location.href='http://localhost:5173';
+      window.location.href=`${import.meta.env.VITE_URL}`;
     })
   }
 

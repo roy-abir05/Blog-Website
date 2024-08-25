@@ -60,15 +60,15 @@ const CommentBox = ({blogId}) => {
 
         console.log(data);
 
-        await axios.post('http://localhost:8080/api/comments/post/addComment', data, { headers: {
+        await axios.post(`${import.meta.env.VITE_API_URL}/api/comments/post/addComment`, data, { headers: {
           'Content-Type': 'application/json'
         },
         withCredentials: true 
         })
         .then((response) => {
             console.log(response.data);
-            alert("Comment posted successfully");
-            // window.location.reload();
+            // alert("Comment posted successfully");
+            window.location.reload();
         })
         .catch((e) => {
             alert(`Error in posting comment at this moment\n${e}`);

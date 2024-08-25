@@ -15,12 +15,17 @@ const SignUp = () => {
     uploadBytes(imageRef, imageUpload).then((snapshot) => {
       getDownloadURL(snapshot.ref).then(async (url) => {
         console.log(url);
-        await axios.patch(`http://localhost:8080/api/users/update/profilePicture/${name}`, url, {
+        await axios.patch(`${import.meta.env.VITE_API_URL}/api/users/update/profilePicture/${name}`, url, {
+          withCredentials: true,
           headers: {
             'Content-Type': 'text/plain'
           }
         })
-        .then((response) => console.log(response))
+        .then((response) => {
+          console.log(response);
+          console.log(url);
+          setCookie("imgUrl", url);
+        })
       });
     });
   };
@@ -33,6 +38,11 @@ const SignUp = () => {
     
   };
 
+  const setCookie = (name, value) => {
+    let expires = "";
+    document.cookie = name + "=" + (value || "") + "; path=/";
+};
+
   const handleSubmit = async () => {
 
     let obj = formData;
@@ -40,7 +50,7 @@ const SignUp = () => {
 
     console.log(obj);
 
-    await axios.post("http://localhost:8080/signup", obj, {
+    await axios.post(`${import.meta.env.VITE_API_URL}/signup`, obj, {
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded'
       }
@@ -51,6 +61,17 @@ const SignUp = () => {
             return;
         }
         console.log(response.data);
+        let loginObj = {email: obj.email, password: obj.password}
+        console.log(loginObj);
+        await axios.post(`${import.meta.env.VITE_API_URL}/login`, loginObj, {
+          withCredentials: true,
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+          }
+        })
+        .then((response) => {
+          console.log(response);
+        })
         await uploadFile(response.data.userId);
     })
     .catch((error) => {
@@ -98,7 +119,7 @@ const SignUp = () => {
             </div>
 
         <div className="login">
-            <p className="loginText">Already Have an Account?</p><a href="http://localhost:8080/login.html" className="loginLink">Login</a>
+            <p className="loginText">Already Have an Account?</p><a href={`${import.meta.env.VITE_API_URL}/login.html`} className="loginLink">Login</a>
         </div>
 
     </div>

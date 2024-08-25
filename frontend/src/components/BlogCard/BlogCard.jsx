@@ -19,7 +19,7 @@ const BlogCard = ({blog}) => {
   // }
 
   const handleReadMore = () => {
-    axios.get(`http://localhost:8080/api/posts/get/getPost/${blog.postId}`)
+    axios.get(`${import.meta.env.VITE_API_URL}/api/posts/get/getPost/${blog.postId}`)
     .then((response) => {
       console.log(response.data);
       navigate('/blogs/showBlog', { state: { blogId : blog.postId, content : response.data.content, title : response.data.title, upVotes: response.data.upVotes.length, downVotes: response.data.downVotes.length } });
